@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Subject } from "../../Types/subject";
 
-
-const useFetchSubjects = (subjects: string) => {
+type useFetchSubjectsProps = {
+    subjects: string,
+}
+const useFetchSubjects = ({ subjects }: useFetchSubjectsProps) => {
     const [subject, setSubject] = useState<Subject | null>(null);
 
     useEffect(() => {
