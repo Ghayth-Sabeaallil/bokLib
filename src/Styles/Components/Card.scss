@@ -1,39 +1,89 @@
-.bok-card{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
 
-    .info{
-        width: 11.3rem;
+.bok-card {
+    @include flex-center-column;
+    font-family: $font-ubuntu;
+
+    .bok-img {
+        border-radius: 15px;
+        float: left;
+        @include w-h-img;
+        object-fit: cover;
+    }
+
+    .bok-img-div {
+        @include w-h-img;
+        background-color: #525151;
+        border-radius: 15px;
+    }
+
+    .info {
+        position: absolute;
+        @include w-h-img;
         text-align: center;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        color: white;
+        @include flex-center-column;
         opacity: 0;
-        gap: 1em;
-       
+        gap: 0.5em;
+        border-radius: 15px;
+        padding: 1em;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        .title{
+            color: #FFF;
+            text-shadow: -1px 1px 0 #000,
+            1px 1px 0 #000,
+            1px -1px 0 #000,
+            -1px -1px 0 #000;
+        }
+        .author{
+            color: #555353;
+            text-shadow: -1px 1px 0 #fff,
+            1px 1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px -1px 0 #fff;
+        }
+        .year{
+            color: #000;
+            text-shadow: -1px 1px 0 #fff,
+            1px 1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px -1px 0 #fff;
+        }
+        .line {
+            border-top: 1.5px solid rgb(168, 166, 166);
+            width: 10rem;
+        }
+    
     }
-   
+
 }
-.bok-card:hover{
-.info{
-    animation: showUp 1s;
-    animation-fill-mode: forwards;
-    background: transparent;
-    backdrop-filter: blur(15px);
-}
-@keyframes showUp {
-    from{
-        opacity: 0;
-        transform: translateY(0%);
+
+.bok-card:hover {
+    .bok-img {
+        box-shadow: 0 0 40px #000;
+    }
+
+    .info {
+        animation: showUp 0.5s;
+        animation-fill-mode: forwards;
+        background: transparent;
+        backdrop-filter: blur(15px);
 
     }
-    to{
-        opacity: 1;
-        transform: translateY(-100%);
+
+    @keyframes showUp {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
-}
 }

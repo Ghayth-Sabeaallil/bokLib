@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { Subject } from "../../Types/subject";
 
 
-const useFetchSubjects = (subjects: string) => {
+const useFetchSearch = (url: string) => {
     const [subject, setSubject] = useState<Subject | null>(null);
 
     useEffect(() => {
-        fetch(`https://openlibrary.org/subjects/${subjects}.json`)
+        fetch(url)
             .then((res) => res.json())
             .then((data) => setSubject(data));
-    }, [subjects]);
+    }, [url]);
 
     return [subject];
 };
-export default useFetchSubjects;
+export default useFetchSearch;

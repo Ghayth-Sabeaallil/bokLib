@@ -1,22 +1,21 @@
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @include flex-center;
+  padding: 4rem;
 
-    .main-box {
-        width: 90vw;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        padding: 2rem 1rem 2rem 1rem;
-        gap: 1rem;
-        border: 3px solid salmon;
-        background-color: sandybrown;
-        opacity: 0.4;
-    }
+  .main-box {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem 1rem 2rem 1rem;
+    gap: 1rem;
+    border: 3px solid salmon;
+    background-color: rgb(221, 220, 218);
+  }
 }
 
 .selsect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @include flex-center;
 }

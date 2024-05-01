@@ -1,0 +1,10 @@
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
+.select-box{
+    width: fit-content;
+    font-size: large;
+    padding: 1em;
+    font-family: $font-ubuntu;
+
+}
