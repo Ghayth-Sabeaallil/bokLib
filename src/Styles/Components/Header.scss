@@ -1,0 +1,58 @@
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+
+.navbar-dekstop {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem 1rem 0 1rem;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 64px;
+      height: 64px;
+    }
+  }
+ 
+.search-bar{
+  display: flex;
+  gap: 15px;
+  select{
+    width: fit-content;
+    font-size: 16px;
+    font-family: $font-ubuntu;
+    font-weight: 400;
+    border-radius: 10px;
+    text-align: center;
+  }
+  input{
+    width: fit-content;
+    font-size: 18px;
+    font-family: $font-ubuntu;
+    font-weight: 500;
+    padding: 1em;
+    border-radius: 10px;
+
+  }
+}
+  a {
+    width: fit-content;
+    text-decoration: none;
+    color: $text-color-dark-mode;
+    font-size: 20px;
+    font-family: $font-ubuntu;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: $menu-bar-select-dark-mode;
+  }
+
+}

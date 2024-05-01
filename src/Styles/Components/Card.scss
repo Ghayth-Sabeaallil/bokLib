@@ -1,0 +1,39 @@
+.bok-card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .info{
+        width: 11.3rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        opacity: 0;
+        gap: 1em;
+       
+    }
+   
+}
+.bok-card:hover{
+.info{
+    animation: showUp 1s;
+    animation-fill-mode: forwards;
+    background: transparent;
+    backdrop-filter: blur(15px);
+}
+@keyframes showUp {
+    from{
+        opacity: 0;
+        transform: translateY(0%);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}
+}
