@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { Subject } from "../../Types/subject";
+import { Search } from "../../Types/dataType";
 
+type useFetchSearchProps = {
+    select: string,
+    search: string
+}
 
-const useFetchSearch = (url: string) => {
-    const [subject, setSubject] = useState<Subject | null>(null);
+const useFetchSearch = ({ search, select }: useFetchSearchProps) => {
+    const [subject, setSubject] = useState<Search | null>(null);
 
     useEffect(() => {
-        fetch(url)
+        fetch(`https://openlibrary.org/search.json?${select}=${search}`)
             .then((res) => res.json())
             .then((data) => setSubject(data));
-    }, [url]);
+    }, [search, select]);
 
     return [subject];
 };

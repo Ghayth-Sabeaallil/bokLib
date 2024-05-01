@@ -1,12 +1,15 @@
 @import "../Abstract/Color";
 @import "../Abstract/Font";
+@import "../Mixin/mixin";
+
 
 .navbar-dekstop {
-  display: grid;
+  display: flex;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 1rem 1rem 1rem 1rem;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 2rem;
   position: sticky;
   top: 0;
   background: transparent;
@@ -23,12 +26,12 @@
  
 .search-bar{
   display: flex;
-  gap: 15px;
+  gap: 1em;
   select{
     width: fit-content;
-    font-size: 16px;
+    font-size: 18px;
     font-family: $font-ubuntu;
-    font-weight: 400;
+    font-weight: 500;
     border-radius: 10px;
     text-align: center;
   }
@@ -39,7 +42,14 @@
     font-weight: 500;
     padding: 1em;
     border-radius: 10px;
-
+  }
+  button{
+    width: fit-content;
+    font-size: 18px;
+    font-family: $font-ubuntu;
+    font-weight: 500;
+    padding: 1em;
+    border-radius: 10px;
   }
 }
   a {

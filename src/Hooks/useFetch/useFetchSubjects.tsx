@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Subject } from "../../Types/subject";
+import { Subject } from "../../Types/dataType";
 
 type useFetchSubjectsProps = {
     subjects: string,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Works } from "../../Types/subject";
+import { Works } from "../../Types/dataType";
 
 type useFetchBooksProps = {
     url: string,
