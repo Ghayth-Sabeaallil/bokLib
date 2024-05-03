@@ -26,7 +26,29 @@
  
 .search-bar{
   display: flex;
-  gap: 1em;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  .search-box-container{
+    width: 30rem;
+    height: 40rem;
+    display: none;
+    gap: 3px;
+    flex-direction: column;
+    position: fixed;
+    margin-top: 4rem;
+    background-color: #dddcda;
+    padding: 1em;
+    border: 3px solid salmon;
+    overflow-y: scroll;
+
+  }
+  .input-bar{
+    display: flex;
+    gap: 1em;
+
+  }
+
   select{
     width: fit-content;
     font-size: 18px;
@@ -36,14 +58,6 @@
     text-align: center;
   }
   input{
-    width: fit-content;
-    font-size: 18px;
-    font-family: $font-ubuntu;
-    font-weight: 500;
-    padding: 1em;
-    border-radius: 10px;
-  }
-  button{
     width: fit-content;
     font-size: 18px;
     font-family: $font-ubuntu;
@@ -66,3 +80,5 @@
   }
 
 }
+
+

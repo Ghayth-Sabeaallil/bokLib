@@ -1,18 +1,19 @@
 import "../../Styles/Components/SelectDropDown.scss"
 type SelectDropDownProps = {
     handleSelectChange: React.ChangeEventHandler<HTMLSelectElement>;
-    subject: string;
+    items: string[];
+    value: string;
 }
-const SelectDropDown = ({ handleSelectChange, subject }: SelectDropDownProps) => {
+const SelectDropDown = ({ handleSelectChange, items, value }: SelectDropDownProps) => {
 
     return (
-        <select className="select-box" value={subject} onChange={handleSelectChange}>
-            <option value="horror">Horror</option>
-            <option value="business">Business</option>
-            <option value="art">Art</option>
-            <option value="design">Design</option>
-            <option value="history">History</option>
-            <option value="humor">Humor</option>
+        <select className="select-box" value={value} onChange={handleSelectChange}>
+            {
+                items.map((item) => (
+                    <option key={item} value={item}>{item.toUpperCase()}</option>
+                ))
+            }
+
         </select>
     )
 }

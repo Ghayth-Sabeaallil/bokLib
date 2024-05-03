@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { Subject } from "../../Types/dataType";
 
 type useFetchSubjectsProps = {
-    subjects: string,
+    subject: string,
 }
-const useFetchSubjects = ({ subjects }: useFetchSubjectsProps) => {
-    const [subject, setSubject] = useState<Subject | null>(null);
+const useFetchSubjects = ({ subject }: useFetchSubjectsProps) => {
+    const [subjects, setSubject] = useState<Subject | null>(null);
 
     useEffect(() => {
-        fetch(`https://openlibrary.org/subjects/${subjects}.json`)
+        fetch(`https://openlibrary.org/subjects/${subject}.json`)
             .then((res) => res.json())
             .then((data) => setSubject(data));
-    }, [subjects]);
+    }, [subject]);
 
-    return [subject];
+    return [subjects];
 };
 export default useFetchSubjects;

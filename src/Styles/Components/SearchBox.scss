@@ -1,9 +1,34 @@
-.search-box {
-    width: 53rem;
-    height: 60rem;
-    border: 1px red solid;
-    position: fixed;
-    margin-top: 4rem;
-    background-color: rgb(175, 177, 176);
-    pointer-events:none;
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
+
+.search-item{
+    display: flex;
+    gap: 1em;
+    font-family: $font-ubuntu;
+    font-size: medium;
+    font-weight: 600;
+    padding: 5px;
+
+    .year{
+        color: #525151;
+    }
+    .rate{
+        color: #525151;
+    }
+
+
+    .bok-img {
+        float: left;
+        @include w-h-img-S;
+        object-fit: cover;
+    }
+
+    .bok-img-div {
+        @include w-h-img-S;
+        background-color: #525151;
+    }
+}
+.search-item:hover{
+background-color: #acaaaa;
 }

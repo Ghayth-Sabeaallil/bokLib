@@ -5,27 +5,33 @@
 .bok-card {
     @include flex-center-column;
     font-family: $font-ubuntu;
+    animation: showUp 4s;
+    @keyframes showUp {
+      from{opacity: 0;}
+      to{opacity: 1;}
+    }
 
     .bok-img {
         border-radius: 15px;
         float: left;
-        @include w-h-img;
+        @include w-h-img-M;
         object-fit: cover;
     }
 
     .bok-img-div {
-        @include w-h-img;
+        @include w-h-img-M;
         background-color: #525151;
         border-radius: 15px;
     }
 
     .info {
+        display: flex;
+        gap: 0.5em;
         position: absolute;
-        @include w-h-img;
+        @include w-h-img-M;
         text-align: center;
         @include flex-center-column;
         opacity: 0;
-        gap: 0.5em;
         border-radius: 15px;
         padding: 1em;
         -webkit-touch-callout: none;
@@ -35,32 +41,35 @@
         -ms-user-select: none;
         user-select: none;
 
-        .title{
+        .title {
             color: #FFF;
             text-shadow: -1px 1px 0 #000,
-            1px 1px 0 #000,
-            1px -1px 0 #000,
-            -1px -1px 0 #000;
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
         }
-        .author{
+
+        .author {
             color: #555353;
             text-shadow: -1px 1px 0 #fff,
-            1px 1px 0 #fff,
-            1px -1px 0 #fff,
-            -1px -1px 0 #fff;
+                1px 1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px -1px 0 #fff;
         }
-        .year{
+
+        .year {
             color: #000;
             text-shadow: -1px 1px 0 #fff,
-            1px 1px 0 #fff,
-            1px -1px 0 #fff,
-            -1px -1px 0 #fff;
+                1px 1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px -1px 0 #fff;
         }
+
         .line {
             border-top: 1.5px solid rgb(168, 166, 166);
             width: 10rem;
         }
-    
+
     }
 
 }
@@ -71,19 +80,9 @@
     }
 
     .info {
-        animation: showUp 0.5s;
-        animation-fill-mode: forwards;
         background: transparent;
         backdrop-filter: blur(15px);
-    }
-
-    @keyframes showUp {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
     }
 }

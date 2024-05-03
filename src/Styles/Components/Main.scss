@@ -4,6 +4,7 @@
 .container {
   @include flex-center;
   padding: 4rem;
+ 
 
   .main-box {
     width: 90vw;
@@ -12,10 +13,6 @@
     padding: 2rem 1rem 2rem 1rem;
     gap: 1rem;
     border: 3px solid salmon;
-    background-color: rgb(221, 220, 218);
+    background-color: #dddcda;
   }
-}
-
-.selsect {
-  @include flex-center;
 }

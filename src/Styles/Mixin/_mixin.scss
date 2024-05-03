@@ -3,9 +3,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-  @mixin w-h-img {
+  @mixin w-h-img-M {
     width: 200px;
     height: 300px;
+}
+
+@mixin w-h-img-S {
+    width: 40px;
+    height: 60px;
 }
 
 @mixin flex-center-column {

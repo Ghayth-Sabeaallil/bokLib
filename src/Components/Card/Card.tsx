@@ -1,13 +1,12 @@
 import "../../Styles/Components/Card.scss"
-type Props = {
+type cardProps = {
     title: string,
     authors: string,
     year: number,
     img_id: number,
-
 }
 
-const Card = ({ title, authors, year, img_id }: Props) => {
+const Card = ({ title, authors, year, img_id }: cardProps) => {
     return (
         <>
             <div className="bok-card">
