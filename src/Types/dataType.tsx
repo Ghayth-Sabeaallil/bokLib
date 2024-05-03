@@ -30,5 +30,6 @@ export type Book = {
     title: string,
     ratings_average: number,
     cover_i: number,
+    number_of_pages_median: number;
 
 }

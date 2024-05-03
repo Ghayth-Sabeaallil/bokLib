@@ -41,6 +41,7 @@
     padding: 1em;
     border: 3px solid salmon;
     overflow-y: scroll;
+    
 
   }
   .input-bar{
@@ -55,7 +56,6 @@
     font-family: $font-ubuntu;
     font-weight: 500;
     border-radius: 10px;
-    text-align: center;
   }
   input{
     width: fit-content;
@@ -68,8 +68,6 @@
 }
   a {
     width: fit-content;
-    text-decoration: none;
-    color: $text-color-dark-mode;
     font-size: 20px;
     font-family: $font-ubuntu;
     font-weight: 500;
