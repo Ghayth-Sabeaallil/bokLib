@@ -20,8 +20,10 @@
 
     .bok-img-div {
         @include w-h-img-M;
-        background-color: #525151;
+        background-color: #807d7d;
         border-radius: 15px;
+        @include flex-center;
+
     }
 
     .info {

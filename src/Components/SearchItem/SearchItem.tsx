@@ -16,7 +16,7 @@ const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_o
     return (
         <>
             <div className="item">
-                {img_id == null ? <div className="bok-img-div"></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${img_id}-M.jpg`} alt={title} />}
+                {img_id == null ? <div className="bok-img-div"><img src="/image.png" alt="none" /></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${img_id}-M.jpg`} alt={title} />}
                 <span className="info">
                     <h1 className="title">{title}</h1>
                     <h2 className="author">By: <p>{author_name}</p></h2>

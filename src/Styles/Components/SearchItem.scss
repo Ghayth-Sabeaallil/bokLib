@@ -9,6 +9,7 @@
     font-weight: 600;
     border-radius: 15px;
     align-items: center;
+    padding: 1em;
 
     p{color:  #525151;}
 
@@ -22,8 +23,10 @@
 
     .bok-img-div {
         @include w-h-img-M;
-        background-color: #525151;
+        background-color: #807d7d;
         border-radius: 15px;
+        @include flex-center;
+
     }
     .info{
         display: flex;
@@ -32,5 +35,5 @@ gap: 1rem;    }
 
 }
 .item:hover{
-    background-color: #acaaaa;
+    background-color: #f0ede7;
     }
