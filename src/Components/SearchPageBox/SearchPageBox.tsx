@@ -1,13 +1,13 @@
 
 import useFetchSearch from "../../Hooks/useFetch/useFetchSearchBar";
 import "../../Styles/Components/SearchPageBox.scss"
-import getDataFromUrl from "../../Utils/getDataFromUrl";
+import getSearchFromUrl from "../../Utils/getSearchFromUrl";
 import SearchItem from "../SearchItem/SearchItem";
 
 
 const SearchPageBox = () => {
     const url: string = document.location.href;
-    const [select, search] = getDataFromUrl(url);
+    const [select, search] = getSearchFromUrl(url);
 
     const [data] = useFetchSearch({ select, search });
 

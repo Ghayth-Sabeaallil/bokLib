@@ -1,4 +1,4 @@
-const getDataFromUrl = (url: string) => {
+const getSearchFromUrl = (url: string) => {
     let params = url.split("?")[1].split("&"),
         data: any;
     for (let i = 0, l = params.length; i < l; i++) {
@@ -6,4 +6,4 @@ const getDataFromUrl = (url: string) => {
     }
     return [data[0], data[1]];
 };
-export default getDataFromUrl;
+export default getSearchFromUrl;
