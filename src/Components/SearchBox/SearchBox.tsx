@@ -13,7 +13,7 @@ const SearchBox = ({ select, search }: searchBoxProps) => {
         <>
             {data?.numFound! > 0
                 ? data?.docs.slice(0, 20).map((book) => (
-                    <div className="search-item">
+                    <div key={book.key} className="search-item">
                         {book.cover_i == null ? (
                             <div className="bok-img-div"></div>
                         ) : (
