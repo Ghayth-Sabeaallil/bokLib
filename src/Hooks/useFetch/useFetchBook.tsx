@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { Subject } from "../../Types/dataType";
+import { BookDetails } from "../../Types/dataType";
 
-type useFetchBookProps = {
-    id: string,
-}
-const useFetchBook = ({ id }: useFetchBookProps) => {
-    const [bookInfo, setBookInfo] = useState<Subject | null>(null);
+
+const useFetchBook = (id: string) => {
+    const [bookInfo, setBookInfo] = useState<BookDetails | null>(null);
 
     useEffect(() => {
         fetch(`https://openlibrary.org/works/${id}.json`)

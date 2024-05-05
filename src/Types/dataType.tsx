@@ -33,3 +33,13 @@ export type Book = {
     number_of_pages_median: number;
     key?: string;
 }
+
+
+export type BookDetails = {
+    title: string,
+    first_publish_date: string,
+    latest_revision: number;
+    subjects: string[],
+    description: string[],
+    authors: string[]
+}

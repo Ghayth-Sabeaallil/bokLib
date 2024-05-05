@@ -1,0 +1,22 @@
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
+.container {
+  @include flex-center;
+  padding: 4rem;
+
+  .bookView-box {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem 1rem 2rem 1rem;
+    gap: 1rem;
+    background-image: url("/bg-main.jpg");
+    border: none;
+    background-size: cover;
+
+    box-shadow: inset 0px 0px 40px 40px #e6d3ab;
+    box-shadow: 0 0 40px #000;
+
+  }
+}

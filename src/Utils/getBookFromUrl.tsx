@@ -1,5 +1,6 @@
 const getBookFromUrl = (url: string) => {
-    let result = url.split("/");
-    return result[result.length - 1];
+    let str: string[] = url.split("/");
+    let resutl: string = str[str.length - 1];
+    return [resutl];
 };
 export default getBookFromUrl;

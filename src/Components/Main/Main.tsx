@@ -22,7 +22,7 @@ const Main = () => {
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={subjects} value={subject} /></legend>
                     {data?.works.map((data) => (
-                        <Card key={data.key} title={data.title} authors={data.authors[0].name} year={data.first_publish_year} img_id={data.cover_id} handleClick={handleClick} key_id={getBookFromUrl(data.key)} />
+                        <Card key={data.key} title={data.title} authors={data.authors[0].name} year={data.first_publish_year} img_id={data.cover_id} handleClick={handleClick} key_id={getBookFromUrl(data.key).toString()} />
                     ))}
                 </fieldset>
             </main>

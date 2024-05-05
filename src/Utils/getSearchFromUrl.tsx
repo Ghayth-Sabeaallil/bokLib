@@ -4,6 +4,9 @@ const getSearchFromUrl = (url: string) => {
     for (let i = 0, l = params.length; i < l; i++) {
         data = params[i].split("=");
     }
+    console.log(data[0])
+    console.log(data[1])
+
     return [data[0], data[1]];
 };
 export default getSearchFromUrl;

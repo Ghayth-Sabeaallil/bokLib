@@ -23,13 +23,7 @@ const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_o
                     <h3 className="first-sentence">First Sentence: <p>{first_sentence}</p></h3>
                     <h3 className="pages">Pages: <p>{number_of_pages_median}</p></h3>
                     <h3 className="rate">Rate: <p>{rate}/10</p></h3>
-
-
-
                     <h4 className="year">First published in: <p>{year}</p></h4></span>
-
-
-
             </div>
         </>
     )
