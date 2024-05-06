@@ -1,7 +1,7 @@
 import useFetchSearchBar from "../../Hooks/useFetch/useFetchSearchBar";
 import "../../Styles/Components/SearchBox.scss";
 import { v4 as uuidv4 } from 'uuid';
-import getBookFromUrl from "../../Utils/getBookFromUrl";
+import getDataFromUrl from "../../Utils/getDataFromUrl";
 
 
 type searchBoxProps = {
@@ -18,7 +18,7 @@ const SearchBox = ({ select, search, handleClick }: searchBoxProps) => {
     return (
         <>
             {data?.numFound! > 0
-                ? data?.docs.slice(0, 20).map((book) => (<div key={uuidv4()} className="search-item" id={getBookFromUrl(book.key!)} onClick={handleClick}>
+                ? data?.docs.slice(0, 20).map((book) => (<div key={uuidv4()} className="search-item" id={getDataFromUrl(book.key!)} onClick={handleClick}>
                     {book.cover_i == null ? (
                         <div className="bok-img-div"></div>
                     ) : (

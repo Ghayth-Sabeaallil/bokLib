@@ -65,6 +65,7 @@ export type Authors = {
     wikipedia: string,
     location: string,
     photo: number[],
+    key: string;
 }
 
 export interface BookRate {

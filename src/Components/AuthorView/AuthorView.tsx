@@ -1,13 +1,13 @@
 import useFetchBook from "../../Hooks/useFetch/useFetchBook";
 import useFetchRate from "../../Hooks/useFetch/useFetchRate";
 import "../../Styles/Components/BookView.scss";
-import getBookId from "../../Utils/getBookId";
+import getIdFromUrl from "../../Utils/getIdFromUrl";
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 import isObject from "../../Utils/isObject";
 import { v4 as uuidv4 } from 'uuid';
 const AuthorView = () => {
     let url = document.location.href;
-    let id = getBookId(url);
+    let id = getIdFromUrl(url);
     const [data] = useFetchBook(id);
     const [rate] = useFetchRate(id);
 

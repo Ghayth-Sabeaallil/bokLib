@@ -3,7 +3,7 @@ import useFetchSubjects from "../../Hooks/useFetch/useFetchSubjects";
 import "../../Styles/Components/Main.scss"
 import Card from "../Card/Card";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
-import getFromUrl from "../../Utils/getBookFromUrl";
+import getFromUrl from "../../Utils/getDataFromUrl";
 import { v4 as uuidv4 } from 'uuid';
 
 
