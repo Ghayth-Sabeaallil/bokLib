@@ -64,10 +64,14 @@ export type Authors = {
     birth_date: string,
     wikipedia: string,
     location: string,
-    photo: number[],
+    photos: number[],
     key: string;
+    death_date: string,
+    bio: string & Bio,
 }
-
+export type Bio = {
+    value: string,
+}
 export interface BookRate {
     summary: Summary
 }

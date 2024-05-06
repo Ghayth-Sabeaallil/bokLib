@@ -6,6 +6,7 @@ const useFetchAuthor = (id: string) => {
     const [authorInfo, setAuthorInfo] = useState<Authors | null>(null);
 
     useEffect(() => {
+        console.log(id)
         fetch(`https://openlibrary.org${id}.json`)
             .then((res) => res.json())
             .then((data) => setAuthorInfo(data));

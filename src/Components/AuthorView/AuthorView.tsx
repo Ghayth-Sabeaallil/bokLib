@@ -1,32 +1,29 @@
-import useFetchBook from "../../Hooks/useFetch/useFetchBook";
-import useFetchRate from "../../Hooks/useFetch/useFetchRate";
-import "../../Styles/Components/BookView.scss";
+import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
+
+import "../../Styles/Components/AuthorView.scss";
 import getIdFromUrl from "../../Utils/getIdFromUrl";
-import getTwoDecimala from "../../Utils/getTwoDecimala";
 import isObject from "../../Utils/isObject";
-import { v4 as uuidv4 } from 'uuid';
 const AuthorView = () => {
     let url = document.location.href;
     let id = getIdFromUrl(url);
-    const [data] = useFetchBook(id);
-    const [rate] = useFetchRate(id);
+    const [author] = useFetchAuthor(`/authors/${id}`);
 
     return (
         <>
             <main className="container">
                 <div className="authorView-box">
                     <div className="img-box">
-                        {data?.covers == null ? <div className="bok-img-div"><img src="/image.png" alt="none" /></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-L.jpg`} alt={data.title} />}
+                        {author?.photos == null ? <div className="bok-img-div"><img src="/image.png" alt="none" /></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${author?.photos[0]}-L.jpg`} alt={author?.name} />}
                     </div>
                     <div className="info-box">
-                        {data?.title != null ? <h1>{data.title}</h1> : null}
-                        {isObject(data?.description) ? <h2><span>Description: </span>{data?.description.value}</h2> : <h2><span>Description: </span>{data?.description}</h2>}
-                        {data?.first_publish_date != null ? <h3><span>Date of publish: </span>{data.first_publish_date}</h3> : null}
-                        {data?.number_of_pages != null ? <h3><span>Pages: </span>{data?.number_of_pages}</h3> : null}
-                        {data?.latest_revision != null ? <h3><span>Last Verision: </span> {data.latest_revision}</h3> : null}
-                        {rate?.summary.average != null ? <h3><span>Rate: </span> {getTwoDecimala(rate?.summary.average)}/10</h3> : null}
-                        <div className="subjects-box"><span>Subjects: </span>{data?.subjects != null ? data?.subjects.map((sub) => (<div key={uuidv4()} className="subject">{sub}</div>)) : null}</div>
+                        {author?.name != null ? <h1>{author.name}</h1> : null}
+                        {isObject(author?.bio) ? <h2><span>Description: </span>{author.bio.value}</h2> : <h2><span>Description: </span>{author?.bio}</h2>}
 
+                        {author?.birth_date != null ? <h3><span>Birthday: </span>{author.birth_date}</h3> : null}
+                        {author?.death_date != null ? <h3><span>Death Date: </span>{author.death_date}</h3> : null}
+
+                        {author?.location != null ? <h3><span>Location: </span>{author.location}</h3> : null}
+                        {author?.wikipedia != null ? <a href={author.wikipedia}><h3>Wiki</h3></a> : null}
                     </div>
 
 

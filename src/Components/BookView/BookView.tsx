@@ -13,6 +13,7 @@ const BookView = () => {
     const [data] = useFetchBook(id);
     const [rate] = useFetchRate(id);
     const [author] = useFetchAuthor(data?.authors![0].author?.key!);
+    console.log(author)
     return (
         <>
             <main className="container">
