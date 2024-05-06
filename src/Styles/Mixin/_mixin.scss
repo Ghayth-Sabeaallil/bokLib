@@ -3,6 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+@mixin w-h-img-L {
+    width: 300px;
+    height: 500px;
+}
   @mixin w-h-img-M {
     width: 200px;
     height: 300px;

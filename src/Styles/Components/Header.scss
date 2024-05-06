@@ -9,74 +9,73 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1;
-  padding: 2rem;
+  padding: 1rem;
   position: sticky;
   top: 0;
   background: transparent;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(25px);
+
   .logo {
     display: flex;
     align-items: center;
     justify-content: center;
+
     img {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
     }
   }
- 
-.search-bar{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2em;
-  .search-box-container{
-    width: 30rem;
-    height: 40rem;
-    display: none;
-    gap: 3px;
-    flex-direction: column;
-    position: fixed;
-    margin-top: 4rem;
-    background-color: #dddcda;
-    padding: 1em;
-    border: 3px solid salmon;
-    overflow-y: scroll;
-    
 
-  }
-  .input-bar{
+  .search-bar {
     display: flex;
-    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
 
-  }
+    .search-box-container {
+      width: 30rem;
+      height: 40rem;
+      display: none;
+      gap: 3px;
+      flex-direction: column;
+      position: fixed;
+      margin-top: 4rem;
+      background-color: #dddcda;
+      padding: 1em;
+      border: 3px solid salmon;
+      overflow-y: scroll;
 
-  select{
-    width: fit-content;
-    font-size: 18px;
-    font-family: $font-ubuntu;
-    font-weight: 500;
-    border-radius: 10px;
-  }
-  input{
-    width: fit-content;
-    font-size: 18px;
-    font-family: $font-ubuntu;
-    font-weight: 500;
-    padding: 1em;
-    border-radius: 10px;
+
+    }
+
+    .input-bar {
+      display: flex;
+      gap: 1em;
+
+    }
+
+    select {
+      width: fit-content;
+      font-size: 18px;
+      font-family: $font-ubuntu;
+      font-weight: 500;
+      border-radius: 10px;
+      border: 2px solid black;
+    }
+
+    input {
+      width: fit-content;
+      font-size: 18px;
+      font-family: $font-ubuntu;
+      font-weight: 500;
+      padding: 1em;
+      border-radius: 10px;
+      border: 2px solid black;
+    }
+
+    input:hover {
+      border: 2px solid rgb(197, 133, 49);
+    }
+
   }
 }
-  a {
-    width: fit-content;
-    font-size: 20px;
-    font-family: $font-ubuntu;
-    font-weight: 500;
-  }
-
-  a:hover {
-    color: $menu-bar-select-dark-mode;
-  }
-
-}
-
-

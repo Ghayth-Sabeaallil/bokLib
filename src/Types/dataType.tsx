@@ -35,11 +35,31 @@ export type Book = {
 }
 
 
-export type BookDetails = {
+export interface BookDetails {
     title: string,
     first_publish_date: string,
     latest_revision: number;
     subjects: string[],
-    description: string[],
-    authors: string[]
+    description: Description & String[],
+    authors?: AuthorDetails[],
+    covers: number[],
+}
+
+export interface Description {
+    value: string,
+}
+
+
+export type AuthorDetails = {
+    author?: AuthorKey,
+}
+export type AuthorKey = {
+    key?: string,
+}
+
+export interface BookRate {
+    summary: Summary
+}
+export interface Summary {
+    average: number;
 }

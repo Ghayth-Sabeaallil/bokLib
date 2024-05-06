@@ -4,6 +4,8 @@ import "../../Styles/Components/Main.scss"
 import Card from "../Card/Card";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import getBookFromUrl from "../../Utils/getBookFromUrl";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Main = () => {
     let subjects = ["horror", "business", "art", "design", "history", "humor"];
@@ -22,7 +24,7 @@ const Main = () => {
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={subjects} value={subject} /></legend>
                     {data?.works.map((data) => (
-                        <Card key={data.key} title={data.title} authors={data.authors[0].name} year={data.first_publish_year} img_id={data.cover_id} handleClick={handleClick} key_id={getBookFromUrl(data.key).toString()} />
+                        <Card key={uuidv4()} title={data.title} authors={data.authors[0].name} year={data.first_publish_year} img_id={data.cover_id} handleClick={handleClick} key_id={getBookFromUrl(data.key).toString()} />
                     ))}
                 </fieldset>
             </main>
