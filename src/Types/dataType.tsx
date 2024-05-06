@@ -25,6 +25,7 @@ export type Search = {
 }
 export type Book = {
     author_name: string[],
+    author_key: string[],
     first_publish_year: number,
     first_sentence: string[],
     language: string[],
@@ -51,12 +52,19 @@ export interface Description {
     value: string,
 }
 
-
 export type AuthorDetails = {
     author?: AuthorKey,
 }
 export type AuthorKey = {
     key?: string,
+}
+
+export type Authors = {
+    name: string,
+    birth_date: string,
+    wikipedia: string,
+    location: string,
+    photo: number[],
 }
 
 export interface BookRate {

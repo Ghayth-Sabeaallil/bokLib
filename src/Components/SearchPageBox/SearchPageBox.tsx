@@ -11,14 +11,15 @@ const SearchPageBox = () => {
 
     const [data] = useFetchSearch({ select, search });
 
-    const handleClick: React.MouseEventHandler<HTMLDivElement> = (e): void => {
+    const handleClickBook: React.MouseEventHandler<HTMLDivElement> = (e): void => {
         window.location.href = `/book?id=${e.currentTarget.id}`;
     }
+
     return (
         <>
             <main className="container">
                 <div className="search-box">
-                    {data?.docs.map((book) => (<SearchItem title={book.title} author_name={book.author_name} year={book.first_publish_year} img_id={book.cover_i} first_sentence={book.first_sentence} isbn={[]} languages={[]} subject_key={[]} rate={book.ratings_average} number_of_pages_median={book.number_of_pages_median} handleClick={handleClick} id={getBookFromUrl(book.key!)} />))}
+                    {data?.docs.map((book) => (<SearchItem title={book.title} author_name={book.author_name} year={book.first_publish_year} img_id={book.cover_i} first_sentence={book.first_sentence} isbn={[]} languages={[]} subject_key={[]} rate={book.ratings_average} number_of_pages_median={book.number_of_pages_median} handleClickBook={handleClickBook} id={getBookFromUrl(book.key!)} author_key={book.author_key} />))}
                 </div>
             </main>
 
