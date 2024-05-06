@@ -43,6 +43,7 @@ export interface BookDetails {
     description: Description & String[],
     authors?: AuthorDetails[],
     covers: number[],
+    number_of_pages?: number
 }
 
 export interface Description {
