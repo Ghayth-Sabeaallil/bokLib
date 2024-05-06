@@ -20,6 +20,7 @@ export type Author = {
 
 export type Search = {
     numFound: number | undefined,
+    key: string,
     docs: Book[],
 }
 export type Book = {

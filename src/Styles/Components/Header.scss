@@ -4,9 +4,7 @@
 
 
 .navbar-dekstop {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+ @include flex-center;
   justify-content: space-between;
   z-index: 1;
   padding: 1rem;
@@ -16,9 +14,7 @@
   backdrop-filter: blur(25px);
 
   .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     img {
       width: 60px;
@@ -44,8 +40,6 @@
       padding: 1em;
       border: 3px solid salmon;
       overflow-y: scroll;
-
-
     }
 
     .input-bar {
@@ -77,5 +71,10 @@
       border: 2px solid rgb(197, 133, 49);
     }
 
+    a{
+      font-family: $font-ubuntu;
+      font-size: large;
+      color: #50504f;
+    }
   }
 }

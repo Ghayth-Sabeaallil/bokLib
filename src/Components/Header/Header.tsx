@@ -8,6 +8,10 @@ function Header() {
     const [select, setSelect] = useState<string>("title");
     const [search, setSearch] = useState<string>("");
 
+    const handleClick: React.MouseEventHandler<HTMLDivElement> = (e): void => {
+        window.location.href = `/book?id=${e.currentTarget.id}`;
+    }
+
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (
         event
     ) => {
@@ -52,7 +56,7 @@ function Header() {
                     </div>
                     <div id="search-box-container" className="search-box-container">
                         {search != "" ? (
-                            <SearchBox search={search} select={select} />
+                            <SearchBox search={search} select={select} handleClick={handleClick} />
                         ) : null}
                         <a className="show-all" href={`/search?${select}=${search}`}>
                             Show all Results
