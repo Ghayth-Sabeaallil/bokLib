@@ -1,6 +1,7 @@
 import "../../Styles/Components/SearchItem.scss"
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 type cardProps = {
+    handleClick: React.MouseEventHandler<HTMLDivElement>;
     title: string,
     author_name: string[],
     year: number,
@@ -11,12 +12,13 @@ type cardProps = {
     subject_key: string[],
     rate: number,
     number_of_pages_median: number;
+    id: string,
 }
 
-const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate }: cardProps) => {
+const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate, handleClick, id }: cardProps) => {
     return (
         <>
-            <div className="item">
+            <div className="item" id={id} onClick={handleClick}>
                 {img_id == null ? <div className="bok-img-div"><img src="/image.png" alt="none" /></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${img_id}-M.jpg`} alt={title} />}
                 <span className="info">
                     {title != null ? <h1 className="title">{title}</h1> : null}
