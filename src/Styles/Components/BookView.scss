@@ -26,6 +26,8 @@
     }
     .img-box {
       grid-column: 1/2;
+      @include flex-center-column;
+      gap: 1em;
       .bok-img {
         @include w-h-img-L;
         border-radius: 15px;
