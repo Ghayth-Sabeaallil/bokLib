@@ -7,6 +7,7 @@ import isObject from "../../Utils/isObject";
 import { v4 as uuidv4 } from 'uuid';
 import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import getDataFromUrl from "../../Utils/getDataFromUrl";
+import { NavLink } from "react-router-dom";
 const BookView = () => {
     let url: string = document.location.href;
     let id = getIdFromUrl(url);
@@ -32,7 +33,7 @@ const BookView = () => {
                     <div className="info-box">
                         {data?.title != null ? <h1>{data.title}</h1> : null}
                         {isObject(data?.description) ? <h2><span>Description: </span>{data?.description.value}</h2> : <h2><span>Description: </span>{data?.description}</h2>}
-                        {author?.name != null ? <><span>By: </span><a href={`/author?id=${getDataFromUrl(author.key)}`}>{author.name}</a></> : null}
+                        {author?.name != null ? <><span>By: </span>  <NavLink to={`/author/${getDataFromUrl(author.key)}`}>{author.name}</NavLink>  </> : null}
                         {data?.first_publish_date != null ? <h3><span>Date of publish: </span>{data.first_publish_date}</h3> : null}
                         {data?.number_of_pages != null ? <h3><span>Pages: </span>{data?.number_of_pages}</h3> : null}
                         {data?.latest_revision != null ? <h3><span>Last Verision: </span> {data.latest_revision}</h3> : null}

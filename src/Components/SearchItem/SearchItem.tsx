@@ -1,7 +1,7 @@
+import { NavLink } from "react-router-dom";
 import "../../Styles/Components/SearchItem.scss"
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 type cardProps = {
-    handleClickBook: React.MouseEventHandler<HTMLDivElement>;
     title: string,
     author_name: string[],
     author_key: string[],
@@ -13,17 +13,16 @@ type cardProps = {
     subject_key: string[],
     rate: number,
     number_of_pages_median: number;
-    id: string,
 }
 
-const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate, handleClickBook, id, author_key }: cardProps) => {
+const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate, author_key }: cardProps) => {
     return (
         <>
-            <div className="item" id={id} onClick={handleClickBook}>
+            <div className="item">
                 {img_id == null ? <div className="bok-img-div"><img src="/image.png" alt="none" /></div> : <img className="bok-img" src={`https://covers.openlibrary.org/b/id/${img_id}-M.jpg`} alt={title} />}
                 <span className="info">
                     {title != null ? <h1 className="title">{title}</h1> : null}
-                    {author_name != null ? <><p>By: </p><a className="author" href={`/author?id=${author_key[0]}`}>{author_name}</a></> : null}
+                    {author_name != null ? <><p>By: </p> <NavLink to={`/author/${author_key[0]}`} className="author">{author_name}</NavLink></> : null}
                     {first_sentence != null ? <h3 className="first-sentence">First Sentence: <p>{first_sentence}</p></h3> : null}
                     {number_of_pages_median != null ? <h3 className="pages">Pages: <p>{number_of_pages_median}</p></h3>
                         : null}

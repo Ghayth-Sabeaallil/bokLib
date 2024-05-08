@@ -10,7 +10,6 @@ function Author() {
     return (<>
         <Header />
         <AuthorView />
-
     </>);
 }
 
