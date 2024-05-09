@@ -3,12 +3,25 @@ import { SaveAuthorContext } from "../../Data/SaveAuthContextProvider/SaveAuthCo
 
 
 const myLibCom = () => {
-    const { state } = useContext(SaveAuthorContext);
-    console.log(state)
+    const { state, dispatch } = useContext(SaveAuthorContext);
+
+    const handleRemove: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        dispatch({ type: "REMOVE", payload: e.currentTarget.id });
+    };
 
     return (
         <>
-            <h1>hello</h1>
+            <ul>
+                {state.authors.map((m) => {
+                    return (
+                        <> <li>
+                            Name: {m.id}
+                        </li>
+                            <button id={m.id} onClick={handleRemove}>Remove</button></>
+                    );
+                })}
+            </ul>
+
         </>
     )
 };

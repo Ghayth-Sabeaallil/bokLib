@@ -39,7 +39,10 @@ const reducer = (state: AuthorState, action: Action) => {
                 authors: [...state.authors, action.payload],
             };
         case "REMOVE":
-            return state;  // detta ska ändras! Remove fungerar inte
+            return {
+                ...state.authors,
+                authors: state.authors.filter((l) => l.id !== action.payload),
+            };
         default:
             return state;
     }
