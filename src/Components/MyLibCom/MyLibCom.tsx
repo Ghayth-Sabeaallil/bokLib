@@ -22,15 +22,11 @@ const myLibCom = () => {
 
     return (
         <>
-
             <main className="container">
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={favourite} value={fav} /></legend>
-                    {state?.authors.map((data) => (
-                        <NavLink key={uuidv4()} to={`/mylib/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /><button id={data.id} onClick={handleRemove}> Remove</button></NavLink>
+                    {state?.authors.map((data) => (<><div className="author-box"><NavLink key={uuidv4()} to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemove}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div></>
                     ))}
-
-
                 </fieldset>
             </main>
         </>

@@ -16,5 +16,13 @@
     background-size: cover;
     box-shadow: inset 0px 0px 40px 40px #e6d3ab;
     box-shadow: 0 0 40px #000;
+    .author-box{
+      @include flex-center-column;
+      gap: 1em;
+      .remove-icon{
+        width: 35px;
+        height: 35px;
+      }
+    }
   }
 }
