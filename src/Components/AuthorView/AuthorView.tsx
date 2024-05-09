@@ -27,7 +27,7 @@ const AuthorView = () => {
         setAdd(true);
         dispatch({
             type: "ADD",
-            payload: { id: authId },
+            payload: { id: authId, name: author?.name!, img: author?.photos[0]!, year: author?.birth_date! },
         });
     };
     const handleClickRemove: React.MouseEventHandler<SVGSVGElement> = () => {

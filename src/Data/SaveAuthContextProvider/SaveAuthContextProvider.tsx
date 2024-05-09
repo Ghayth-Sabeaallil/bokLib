@@ -3,6 +3,9 @@ import { createContext, useReducer } from "react";
 
 type Author = {
     id: string;
+    name: string;
+    img: number;
+    year: string
 };
 
 

@@ -2,7 +2,7 @@ import "../../Styles/Components/Card.scss"
 type cardProps = {
     title: string,
     authors: string,
-    year: number,
+    year: number | string,
     img_id: number,
 }
 
