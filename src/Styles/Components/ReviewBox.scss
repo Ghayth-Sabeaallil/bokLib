@@ -1,0 +1,28 @@
+@import "../Abstract/Color";
+@import "../Abstract/Font";
+@import "../Mixin/mixin";
+.review-box{
+  @include flex-center-column;
+  gap: 1em;
+  .star-rating{
+    @include flex-center;
+    gap: 1em;
+  }
+  .text-area-review{
+    font-family: $font-ubuntu;
+    font-weight: 600;
+    resize: none;
+    width: 35rem;
+    height: 20rem;
+    padding: 1rem;
+  }
+  .submit-btn{
+    font-family: $font-ubuntu;
+    font-weight: 600;
+    font-size: larger;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0.5em;
+  }
+
+}

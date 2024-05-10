@@ -14,6 +14,20 @@ type Book = {
     author: string;
 };
 
+type Read = {
+    title: string;
+    img: number;
+    id: string;
+    author: string;
+};
+
+type Review = {
+    rate: number;
+    review: string;
+    id: string;
+    page: number;
+};
+
 
 // GlobalState
 type AuthorState = {
@@ -22,10 +36,26 @@ type AuthorState = {
 type BookState = {
     books: Book[];
 };
+type ReadState = {
+    reads: Read[];
+};
+type ReviewState = {
+    reviews: Review[];
+};
 
 
 const initialSaveAuthorState: AuthorState = {
     authors: [
+    ],
+};
+
+const initialSaveReviewState: ReviewState = {
+    reviews: [
+    ],
+};
+
+const initialSaveReadState: ReadState = {
+    reads: [
     ],
 };
 
@@ -34,6 +64,21 @@ const initialSaveBookState: BookState = {
     ],
 };
 
+export const SaveReadContext = createContext<{
+    readState: ReadState;
+    readDispatch: React.Dispatch<Action>;
+}>({
+    readState: initialSaveReadState,
+    readDispatch: () => null,
+});
+
+export const SaveReviewContext = createContext<{
+    reviewState: ReviewState;
+    reviewDispatch: React.Dispatch<Action>;
+}>({
+    reviewState: initialSaveReviewState,
+    reviewDispatch: () => null,
+});
 
 export const SaveAuthorContext = createContext<{
     authState: AuthorState;
@@ -51,13 +96,31 @@ export const SaveBookContext = createContext<{
     bookDispatch: () => null,
 });
 
-
 type Action =
     | { type: "ADD_AUTHOR"; payload: Author }
     | { type: "ADD_BOOK"; payload: Book }
+    | { type: "ADD_READ"; payload: Read }
+    | { type: "ADD_REVIEW"; payload: Review }
+    | { type: "REMOVE_READ"; payload: string }
     | { type: "REMOVE_AUTHOR"; payload: string }
+    | { type: "EDIT_REVIEW"; payload: string }
     | { type: "REMOVE_BOOK"; payload: string };
 
+const readReduces = (state: ReadState, action: Action) => {
+    switch (action.type) {
+        case "ADD_READ":
+            return {
+                reads: [...state.reads, action.payload],
+            };
+        case "REMOVE_READ":
+            return {
+                ...state.reads,
+                reads: state.reads.filter((l) => l.id !== action.payload),
+            };
+        default:
+            return state;
+    }
+};
 
 const authorReduces = (state: AuthorState, action: Action) => {
     switch (action.type) {
@@ -90,6 +153,21 @@ const bookReduces = (state: BookState, action: Action) => {
     }
 };
 
+const reviewReduces = (state: ReviewState, action: Action) => {
+    switch (action.type) {
+        case "ADD_REVIEW":
+            return {
+                reviews: [...state.reviews, action.payload],
+            };
+        case "EDIT_REVIEW":
+            return {
+                ...state.reviews,
+                reviews: state.reviews.filter((l) => l.id !== action.payload),
+            };
+        default:
+            return state;
+    }
+};
 
 type ContextProviderProp = {
     children: React.ReactNode;
@@ -100,19 +178,19 @@ function ContextProvider({ children }: ContextProviderProp) {
 
     const [authState, authDispatch] = useReducer(authorReduces, initialSaveAuthorState);
     const [bookState, bookDispatch] = useReducer(bookReduces, initialSaveBookState);
-
-
-
+    const [readState, readDispatch] = useReducer(readReduces, initialSaveReadState);
+    const [reviewState, reviewDispatch] = useReducer(reviewReduces, initialSaveReviewState);
 
     return (
-        <SaveBookContext.Provider value={{ bookState, bookDispatch }}>
-            <SaveAuthorContext.Provider value={{ authState, authDispatch }}>
-                {children}
-            </SaveAuthorContext.Provider>
-        </SaveBookContext.Provider>
-
+        <SaveReadContext.Provider value={{ readState, readDispatch }}>
+            <SaveReviewContext.Provider value={{ reviewState, reviewDispatch }}>
+                <SaveBookContext.Provider value={{ bookState, bookDispatch }}>
+                    <SaveAuthorContext.Provider value={{ authState, authDispatch }}>
+                        {children}
+                    </SaveAuthorContext.Provider>
+                </SaveBookContext.Provider>
+            </SaveReviewContext.Provider>
+        </SaveReadContext.Provider>
     );
 }
-
-
 export default ContextProvider;

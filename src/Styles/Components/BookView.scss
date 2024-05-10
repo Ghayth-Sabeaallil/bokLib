@@ -5,9 +5,9 @@
 .container {
   padding: 4rem;
   font-family: $font-ubuntu;
-  color: #616161;
 
   .bookView-box {
+    color: #616161;
     width: 90vw;
     grid-template-columns: repeat(5, 1fr);
     display: grid;
@@ -68,7 +68,7 @@
         color: #000;
       }
     }
-    span{
+    .black{
       color: #000;
       font-weight: bolder;
       font-size: larger;
