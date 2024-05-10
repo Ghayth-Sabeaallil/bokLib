@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "../../Styles/Components/MyLibCom.scss"
-import { SaveAuthorContext } from "../../Data/SaveAuthContextProvider/SaveAuthContextProvider";
+import { SaveAuthorContext, SaveBookContext } from "../../Data/ContextProvider";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { NavLink } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
@@ -10,10 +10,15 @@ import Card from "../Card/Card";
 const myLibCom = () => {
     let favourite = ["favourite books", "favourite authors", "readen books"];
     const [fav, setFav] = useState<string>("favourite books");
-    const { state, dispatch } = useContext(SaveAuthorContext);
+    const { authState, authDispatch } = useContext(SaveAuthorContext);
+    const { bookState, bookDispatch } = useContext(SaveBookContext);
 
-    const handleRemove: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-        dispatch({ type: "REMOVE", payload: e.currentTarget.id });
+
+    const handleRemoveAuth: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        authDispatch({ type: "REMOVE_AUTHOR", payload: e.currentTarget.id });
+    };
+    const handleRemoveBook: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        bookDispatch({ type: "REMOVE_BOOK", payload: e.currentTarget.id });
     };
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setFav(event.target.value);
@@ -25,8 +30,14 @@ const myLibCom = () => {
             <main className="container">
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={favourite} value={fav} /></legend>
-                    {state?.authors.map((data) => (<><div className="author-box"><NavLink key={uuidv4()} to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemove}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div></>
-                    ))}
+                    {
+                        fav == "favourite authors" ? authState?.authors.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveAuth}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
+                        )) : null
+                    }
+
+                    {fav == "favourite books" ? bookState?.books.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/book/${data.id}`}><Card title={data.title} authors={data.author} year={data.id} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveBook}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
+                    )) : null}
+
                 </fieldset>
             </main>
         </>
