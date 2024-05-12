@@ -11,7 +11,6 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
     const [pages, setPages] = useState<number>(0);
     const { reviewState, reviewDispatch } = useContext(SaveReviewContext);
 
-    console.log(reviewState)
     const handleRateChange: React.ChangeEventHandler<HTMLInputElement> = (
         event
     ) => {

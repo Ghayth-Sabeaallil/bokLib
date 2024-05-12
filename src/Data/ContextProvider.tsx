@@ -1,11 +1,10 @@
 import { createContext, useReducer } from "react";
 
-
 type Author = {
     id: string;
     name: string;
     img: number;
-    year: string
+    year: string;
 };
 type Book = {
     title: string;
@@ -28,7 +27,6 @@ type Review = {
     page: number;
 };
 
-
 // GlobalState
 type AuthorState = {
     authors: Author[];
@@ -43,25 +41,20 @@ type ReviewState = {
     reviews: Review[];
 };
 
-
 const initialSaveAuthorState: AuthorState = {
-    authors: [
-    ],
+    authors: [],
 };
 
 const initialSaveReviewState: ReviewState = {
-    reviews: [
-    ],
+    reviews: [],
 };
 
 const initialSaveReadState: ReadState = {
-    reads: [
-    ],
+    reads: [],
 };
 
 const initialSaveBookState: BookState = {
-    books: [
-    ],
+    books: [],
 };
 
 export const SaveReadContext = createContext<{
@@ -175,11 +168,22 @@ type ContextProviderProp = {
 function ContextProvider({ children }: ContextProviderProp) {
     // här kan vi använda useReducer eller useState
 
-
-    const [authState, authDispatch] = useReducer(authorReduces, initialSaveAuthorState);
-    const [bookState, bookDispatch] = useReducer(bookReduces, initialSaveBookState);
-    const [readState, readDispatch] = useReducer(readReduces, initialSaveReadState);
-    const [reviewState, reviewDispatch] = useReducer(reviewReduces, initialSaveReviewState);
+    const [authState, authDispatch] = useReducer(
+        authorReduces,
+        initialSaveAuthorState
+    );
+    const [bookState, bookDispatch] = useReducer(
+        bookReduces,
+        initialSaveBookState
+    );
+    const [readState, readDispatch] = useReducer(
+        readReduces,
+        initialSaveReadState
+    );
+    const [reviewState, reviewDispatch] = useReducer(
+        reviewReduces,
+        initialSaveReviewState
+    );
 
     return (
         <SaveReadContext.Provider value={{ readState, readDispatch }}>
