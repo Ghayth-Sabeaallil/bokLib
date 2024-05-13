@@ -18,7 +18,6 @@ const BookView = () => {
   const [rate] = useFetchRate(id);
   const [add, setAdd] = useState<boolean>(false);
   const [read, setRead] = useState<boolean>(false);
-
   const { bookState, bookDispatch } = useContext(SaveBookContext);
   const { readState, readDispatch } = useContext(SaveReadContext);
 
