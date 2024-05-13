@@ -4,7 +4,12 @@ import SearchBox from "../SearchBox/SearchBox";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { NavLink } from "react-router-dom";
 import useFetchSearchBar from "../../Hooks/useFetch/useFetchSearchBar";
-import getIdFromUrl from "../../Utils/getIdFromUrl";
+
+const getIdFromUrl = (url: string) => {
+    let str: string[] = url.split("/");
+    let resutl: string = str[str.length - 1];
+    return resutl;
+};
 
 function Header() {
     let selectList = ["title", "author", "isbn", "query"];

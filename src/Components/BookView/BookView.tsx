@@ -1,16 +1,27 @@
 import useFetchBook from "../../Hooks/useFetch/useFetchBook";
 import useFetchRate from "../../Hooks/useFetch/useFetchRate";
 import "../../Styles/Components/BookView.scss";
-import getIdFromUrl from "../../Utils/getIdFromUrl";
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 import isObject from "../../Utils/isObject";
 import { v4 as uuidv4 } from "uuid";
 import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
-import getDataFromUrl from "../../Utils/getDataFromUrl";
 import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { SaveBookContext, SaveReadContext } from "../../Data/ContextProvider";
 import ReviewBox from "../ReviewBox/ReviewBox";
+
+const getDataFromUrl = (url: string) => {
+  let str: string[] = url.split("/");
+  let resutl: string = str[str.length - 1];
+  return resutl;
+};
+
+const getIdFromUrl = (url: string) => {
+  let str: string[] = url.split("/");
+  let resutl: string = str[str.length - 1];
+  return resutl;
+};
+
 const BookView = () => {
   let url: string = document.location.href;
   let id = getIdFromUrl(url);
@@ -20,6 +31,8 @@ const BookView = () => {
   const [read, setRead] = useState<boolean>(false);
   const { bookState, bookDispatch } = useContext(SaveBookContext);
   const { readState, readDispatch } = useContext(SaveReadContext);
+  let isObj = isObject(data?.description);
+
 
   const [bookId, setId] = useState<string>("");
   const [author] = useFetchAuthor(data?.authors![0].author?.key!);
@@ -159,7 +172,7 @@ const BookView = () => {
           </div>
           <div className="info-box">
             {data?.title != null ? <h1>{data.title}</h1> : null}
-            {isObject(data?.description) ? (
+            {isObj ? (
               <h2>
                 <span className="black">Description: </span>
                 {data?.description.value}

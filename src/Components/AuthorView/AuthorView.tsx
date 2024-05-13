@@ -3,8 +3,12 @@ import { SaveAuthorContext } from "../../Data/ContextProvider";
 import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 
 import "../../Styles/Components/AuthorView.scss";
-import getIdFromUrl from "../../Utils/getIdFromUrl";
 import isObject from "../../Utils/isObject";
+const getIdFromUrl = (url: string) => {
+    let str: string[] = url.split("/");
+    let resutl: string = str[str.length - 1];
+    return resutl;
+};
 const AuthorView = () => {
     const { authState, authDispatch } = useContext(SaveAuthorContext);
     const [authId, setId] = useState<string>("");
@@ -13,6 +17,7 @@ const AuthorView = () => {
     let url = document.location.href;
     let id = getIdFromUrl(url);
     const [author] = useFetchAuthor(`/authors/${id}`);
+    let isObj = isObject(author?.bio);
 
     useEffect(() => {
         authState.authors.map((a) => {
@@ -54,7 +59,7 @@ const AuthorView = () => {
                     </div>
                     <div className="info-box">
                         {author?.name != null ? <h1>{author.name}</h1> : null}
-                        {isObject(author?.bio) ? <h2><span>Des: </span>{author?.bio.value}</h2> : <h2><span></span>{author?.bio}</h2>}
+                        {isObj ? <h2><span>Des: </span>{author?.bio.value}</h2> : <h2><span></span>{author?.bio}</h2>}
 
                         {author?.birth_date != null ? <h3><span>Birthday: </span>{author.birth_date}</h3> : null}
                         {author?.death_date != null ? <h3><span>Death Date: </span>{author.death_date}</h3> : null}

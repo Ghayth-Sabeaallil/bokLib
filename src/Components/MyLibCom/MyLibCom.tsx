@@ -30,14 +30,15 @@ const myLibCom = () => {
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setFav(event.target.value);
     };
-
+    let mp = medelPages(reviewState);
+    let mb = parseInt(medelRates(reviewState));
 
     return (
         <>
             <main className="container">
                 <h1>Reviwed Books: {reviewState.reviews.length}</h1>
-                <h1>Medelbetyg : {isNaN(parseInt(medelRates(reviewState))) ? 0 : medelRates(reviewState)}</h1>
-                <h1>Medelantal Sidor : {isNaN(medelPages(reviewState)) ? 0 : medelPages(reviewState)}</h1>
+                <h1>Medelbetyg : {isNaN(mb) ? 0 : mb}</h1>
+                <h1>Medelantal Sidor : {isNaN(mp) ? 0 : mp}</h1>
 
                 <fieldset className="main-box">
 

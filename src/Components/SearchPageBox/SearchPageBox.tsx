@@ -1,10 +1,15 @@
 import { NavLink } from "react-router-dom";
 import useFetchSearch from "../../Hooks/useFetch/useFetchSearchBar";
 import "../../Styles/Components/SearchPageBox.scss"
-import getDataFromUrl from "../../Utils/getDataFromUrl";
 import getSearchFromUrl from "../../Utils/getSearchFromUrl";
 import SearchItem from "../SearchItem/SearchItem";
 import { v4 as uuidv4 } from 'uuid';
+
+const getDataFromUrl = (url: string) => {
+    let str: string[] = url.split("/");
+    let resutl: string = str[str.length - 1];
+    return resutl;
+};
 
 
 const SearchPageBox = () => {
