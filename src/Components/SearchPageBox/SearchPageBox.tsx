@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
-import useFetchSearch from "../../Hooks/useFetch/useFetchSearchBar";
+import useFetchSearch from "../../Hooks/useFetch/useFetchSearch";
 import "../../Styles/Components/SearchPageBox.scss"
 import getSearchFromUrl from "../../Utils/getSearchFromUrl";
 import SearchItem from "../SearchItem/SearchItem";
 import { v4 as uuidv4 } from 'uuid';
 
 const getDataFromUrl = (url: string) => {
-    const str: string[] = url.split("/");
-    const resutl: string = str[str.length - 1];
+    let str: string[] = url.split("/");
+    let resutl: string = str[str.length - 1];
     return resutl;
 };
 
