@@ -5,8 +5,8 @@ import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import "../../Styles/Components/AuthorView.scss";
 import isObject from "../../Utils/isObject";
 const getIdFromUrl = (url: string) => {
-    let str: string[] = url.split("/");
-    let resutl: string = str[str.length - 1];
+    const str: string[] = url.split("/");
+    const resutl: string = str[str.length - 1];
     return resutl;
 };
 const AuthorView = () => {
@@ -14,10 +14,10 @@ const AuthorView = () => {
     const [authId, setId] = useState<string>("");
     const [add, setAdd] = useState<boolean>(false);
 
-    let url = document.location.href;
-    let id = getIdFromUrl(url);
+    const url = document.location.href;
+    const id = getIdFromUrl(url);
     const [author] = useFetchAuthor(`/authors/${id}`);
-    let isObj = isObject(author?.bio);
+    const isObj = isObject(author?.bio);
 
     useEffect(() => {
         authState.authors.map((a) => {

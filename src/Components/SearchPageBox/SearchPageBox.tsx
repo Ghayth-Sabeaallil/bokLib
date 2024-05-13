@@ -6,8 +6,8 @@ import SearchItem from "../SearchItem/SearchItem";
 import { v4 as uuidv4 } from 'uuid';
 
 const getDataFromUrl = (url: string) => {
-    let str: string[] = url.split("/");
-    let resutl: string = str[str.length - 1];
+    const str: string[] = url.split("/");
+    const resutl: string = str[str.length - 1];
     return resutl;
 };
 

@@ -6,13 +6,13 @@ import { NavLink } from "react-router-dom";
 import useFetchSearchBar from "../../Hooks/useFetch/useFetchSearchBar";
 
 const getIdFromUrl = (url: string) => {
-    let str: string[] = url.split("/");
-    let resutl: string = str[str.length - 1];
+    const str: string[] = url.split("/");
+    const resutl: string = str[str.length - 1];
     return resutl;
 };
 
 function Header() {
-    let selectList = ["title", "author", "isbn", "query"];
+    const selectList = ["title", "author", "isbn", "query"];
     const [select, setSelect] = useState<string>("title");
     const [search, setSearch] = useState<string>("");
     const [data] = useFetchSearchBar({ select, search });
@@ -26,7 +26,7 @@ function Header() {
         event
     ) => {
         setSearch(event.target.value);
-        let search_box = document.getElementById(
+        const search_box = document.getElementById(
             "search-box-container"
         ) as HTMLElement;
         if (event.target.value != "") {

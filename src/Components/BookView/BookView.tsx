@@ -11,27 +11,27 @@ import { SaveBookContext, SaveReadContext } from "../../Data/ContextProvider";
 import ReviewBox from "../ReviewBox/ReviewBox";
 
 const getDataFromUrl = (url: string) => {
-  let str: string[] = url.split("/");
-  let resutl: string = str[str.length - 1];
+  const str: string[] = url.split("/");
+  const resutl: string = str[str.length - 1];
   return resutl;
 };
 
 const getIdFromUrl = (url: string) => {
-  let str: string[] = url.split("/");
-  let resutl: string = str[str.length - 1];
+  const str: string[] = url.split("/");
+  const resutl: string = str[str.length - 1];
   return resutl;
 };
 
 const BookView = () => {
-  let url: string = document.location.href;
-  let id = getIdFromUrl(url);
+  const url: string = document.location.href;
+  const id = getIdFromUrl(url);
   const [data] = useFetchBook(id);
   const [rate] = useFetchRate(id);
   const [add, setAdd] = useState<boolean>(false);
   const [read, setRead] = useState<boolean>(false);
   const { bookState, bookDispatch } = useContext(SaveBookContext);
   const { readState, readDispatch } = useContext(SaveReadContext);
-  let isObj = isObject(data?.description);
+  const isObj = isObject(data?.description);
 
 
   const [bookId, setId] = useState<string>("");

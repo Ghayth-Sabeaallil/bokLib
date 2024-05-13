@@ -7,13 +7,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { NavLink } from "react-router-dom";
 
 const getDataFromUrl = (url: string) => {
-    let str: string[] = url.split("/");
-    let resutl: string = str[str.length - 1];
+    const str: string[] = url.split("/");
+    const resutl: string = str[str.length - 1];
     return resutl;
 };
 
 const Main = () => {
-    let subjects = ["horror", "business", "art", "design", "history", "humor"];
+    const subjects = ["horror", "business", "art", "design", "history", "humor"];
     const [subject, setSubject] = useState<string>("horror");
     const [data] = useFetchSubjects({ subject });
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {

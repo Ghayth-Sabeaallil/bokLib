@@ -10,7 +10,7 @@ import medelPages from "../../Utils/medelPages";
 
 
 const myLibCom = () => {
-    let favourite = ["favourite books", "favourite authors", "readen books"];
+    const favourite = ["favourite books", "favourite authors", "readen books"];
     const [fav, setFav] = useState<string>("favourite books");
     const { authState, authDispatch } = useContext(SaveAuthorContext);
     const { bookState, bookDispatch } = useContext(SaveBookContext);
@@ -30,8 +30,8 @@ const myLibCom = () => {
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setFav(event.target.value);
     };
-    let mp = medelPages(reviewState);
-    let mb = parseInt(medelRates(reviewState));
+    const mp = medelPages(reviewState);
+    const mb = parseInt(medelRates(reviewState));
 
     return (
         <>
