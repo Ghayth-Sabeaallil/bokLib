@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import "../../Styles/Components/MyLibCom.scss"
-import { SaveAuthorContext, SaveBookContext, SaveReadContext } from "../../Data/ContextProvider";
+import { SaveAuthorContext, SaveBookContext, SaveReadContext, SaveReviewContext } from "../../Data/ContextProvider";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { NavLink } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import Card from "../Card/Card";
+import medelRates from "../../Utils/medelRates";
+import medelPages from "../../Utils/medelPages";
 
 
 const myLibCom = () => {
@@ -13,6 +15,8 @@ const myLibCom = () => {
     const { authState, authDispatch } = useContext(SaveAuthorContext);
     const { bookState, bookDispatch } = useContext(SaveBookContext);
     const { readState, readDispatch } = useContext(SaveReadContext);
+    const { reviewState } = useContext(SaveReviewContext);
+
 
     const handleRemoveAuth: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         authDispatch({ type: "REMOVE_AUTHOR", payload: e.currentTarget.id });
@@ -31,7 +35,12 @@ const myLibCom = () => {
     return (
         <>
             <main className="container">
+                <h1>Reviwed Books: {reviewState.reviews.length}</h1>
+                <h1>Medelbetyg : {isNaN(parseInt(medelRates(reviewState))) ? 0 : medelRates(reviewState)}</h1>
+                <h1>Medelantal Sidor : {isNaN(medelPages(reviewState)) ? 0 : medelPages(reviewState)}</h1>
+
                 <fieldset className="main-box">
+
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={favourite} value={fav} /></legend>
                     {
                         fav == "favourite authors" ? authState?.authors.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveAuth}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
@@ -46,6 +55,7 @@ const myLibCom = () => {
                     }
 
                 </fieldset>
+
             </main>
         </>
     )

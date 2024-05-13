@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "../../Styles/Components/ReviewBox.scss"
 import { SaveReviewContext } from "../../Data/ContextProvider";
 type ReviewBoxProps = {
@@ -8,9 +8,18 @@ type ReviewBoxProps = {
 const ReviewBox = ({ id }: ReviewBoxProps) => {
     const [rate, setRate] = useState<number>(0);
     const [review, setReview] = useState<string>("");
-    const [pages, setPages] = useState<number>(0);
-    const { reviewState, reviewDispatch } = useContext(SaveReviewContext);
+    const [pages, setPages] = useState<string>("");
+    const [isReview, setIsReview] = useState<boolean>(false);
+    const divRef = useRef<HTMLDivElement>(null);
 
+    const { reviewState, reviewDispatch } = useContext(SaveReviewContext);
+    useEffect(() => {
+        reviewState.reviews.map((a) => {
+            if (a.id === id) {
+                setIsReview(true);
+            }
+        });
+    });
     const handleRateChange: React.ChangeEventHandler<HTMLInputElement> = (
         event
     ) => {
@@ -22,7 +31,7 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
         setReview(event.currentTarget.value);
     };
     const handlePageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        setPages(parseInt(event.currentTarget.value));
+        setPages(event.currentTarget.value);
     };
 
     const handleSaveReview: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -35,21 +44,22 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
                 page: pages
             },
         });
+        if (divRef.current) {
+            divRef.current.style.display = "none";
+        }
     };
 
     return (
-        <div className="review-box">
-            <h2>Rating</h2>
+        <>{isReview ? null : <div ref={divRef} className="review-box">
             <div className="star-rating"><h3>0</h3>
                 <input type="range" min={0} max={5} value={rate} onChange={handleRateChange} />
                 <h3>5</h3>
             </div>
             <h3>{rate}</h3>
-            <form action=""></form>
             <textarea className="text-area-review" name="book-review" placeholder="Write book review here ..." onChange={handleReviewChange}></textarea>
-            <input type="number" placeholder="Pages" onChange={handlePageChange} />
-            <button className="submit-btn" onClick={handleSaveReview}>Submit</button>
-        </div>
+            <input type="number" placeholder="Pages" onChange={handlePageChange} /><div><button className="submit-btn" onClick={handleSaveReview}>Submit</button>
+            </div>
+        </div >}</>
     )
 }
 export default ReviewBox;

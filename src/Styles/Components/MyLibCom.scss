@@ -2,9 +2,12 @@
 @import "../Abstract/Font";
 @import "../Mixin/mixin";
 .container {
-  @include flex-center;
+  @include flex-center-column;
   padding: 4rem;
-
+h1{
+  color: white;
+  background-color: #000;
+}
   .main-box {
     width: 90vw;
     display: grid;

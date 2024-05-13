@@ -24,7 +24,7 @@ type Review = {
     rate: number;
     review: string;
     id: string;
-    page: number;
+    page: string;
 };
 
 // GlobalState
@@ -37,7 +37,7 @@ type BookState = {
 type ReadState = {
     reads: Read[];
 };
-type ReviewState = {
+export type ReviewState = {
     reviews: Review[];
 };
 
@@ -96,7 +96,7 @@ type Action =
     | { type: "ADD_REVIEW"; payload: Review }
     | { type: "REMOVE_READ"; payload: string }
     | { type: "REMOVE_AUTHOR"; payload: string }
-    | { type: "EDIT_REVIEW"; payload: string }
+    | { type: "EDIT_REVIEW"; payload: string; page: string, rate: number, review: string }
     | { type: "REMOVE_BOOK"; payload: string };
 
 const readReduces = (state: ReadState, action: Action) => {
@@ -155,7 +155,13 @@ const reviewReduces = (state: ReviewState, action: Action) => {
         case "EDIT_REVIEW":
             return {
                 ...state.reviews,
-                reviews: state.reviews.filter((l) => l.id !== action.payload),
+                reviews: state.reviews.map(p => {
+                    if (p.id == action.payload) {
+                        return { ...p, rate: action.rate, page: action.page, review: action.review };
+                    } else {
+                        return p;
+                    }
+                }),
             };
         default:
             return state;
