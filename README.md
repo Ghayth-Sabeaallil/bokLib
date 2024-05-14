@@ -1,25 +1,45 @@
-# Movies API React
+# Books API React
 
 ## Description
 
-This project is about ....
+This project is about a library books webapplication. In this project the user can search for book/author/query or isbn. The user can also save book or author and set a mark as readen book and give a review and rate.
 
-## Installation
+## Dependencies
 
-Step 1: Go to the projects folder
+Vite
+TypeScript
+REACT
+SCSS
+UUIDV4
+
+## Installation And Run (Locally)
+
+Step 1: Clone the repo
 
 ```console
-$ cd reactMovie/
+$ git clone git@github.com:Ghayth-Sabeaallil/bokLib.git
 ```
 
-Step 2: Install node_modules
+Step 2: Go to the repo folder
+
+```console
+$ cd bokLib
+```
+
+Step 3: Install all dependencies and node_moudles
 
 ```console
 $ npm install
 ```
 
-Step 3: Start the local server.
+Step 4: Run the project
 
 ```console
 $ npm run dev
 ```
+
+## Run (Online)
+
+Add the word "box" after the github in my repo url
+https://github.com/Ghayth-Sabeaallil/bokLib <== My repo
+https://githubbox.com/Ghayth-Sabeaallil/bokLib <== Online run

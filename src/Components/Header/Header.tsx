@@ -53,7 +53,7 @@ function Header() {
                         />
                         <input
                             type="text"
-                            placeholder="title/author/isbn"
+                            placeholder="Search"
                             onChange={handleSearchChange}
                         />
                     </div>
