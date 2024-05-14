@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from "uuid";
 import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { SaveBookContext, SaveReadContext } from "../../Data/ContextProvider";
 import ReviewBox from "../ReviewBox/ReviewBox";
+import { SaveContext } from "../../Data/ContextDataProvider";
 
 const getDataFromUrl = (url: string) => {
   const str: string[] = url.split("/");
@@ -29,31 +29,28 @@ const BookView = () => {
   const [rate] = useFetchRate(id);
   const [add, setAdd] = useState<boolean>(false);
   const [read, setRead] = useState<boolean>(false);
-  const { bookState, bookDispatch } = useContext(SaveBookContext);
-  const { readState, readDispatch } = useContext(SaveReadContext);
+  const { state, dispatch } = useContext(SaveContext);
   const isObj = isObject(data?.description);
 
 
   const [bookId, setId] = useState<string>("");
   const [author] = useFetchAuthor(data?.authors![0].author?.key!);
-
   useEffect(() => {
-    bookState.books.map((a) => {
+    state.books.map((a) => {
       if (a.id === bookId) {
         setAdd(true);
       }
     });
-    readState.reads.map((a) => {
+    state.reads.map((a) => {
       if (a.id === bookId) {
         setRead(true);
       }
     });
     setId(id);
   });
-
   const handleClickAdd: React.MouseEventHandler<SVGSVGElement> = () => {
     setAdd(true);
-    bookDispatch({
+    dispatch({
       type: "ADD_BOOK",
       payload: {
         id: bookId,
@@ -65,15 +62,13 @@ const BookView = () => {
   };
   const handleClickRemove: React.MouseEventHandler<SVGSVGElement> = () => {
     setAdd(false);
-    bookDispatch({
-      type: "REMOVE_BOOK",
-      payload: bookId,
-    });
+    dispatch({ type: "REMOVE_BOOK", payload: bookId });
+
   };
 
   const handleClickAddRead: React.MouseEventHandler<SVGSVGElement> = () => {
     setRead(true);
-    readDispatch({
+    dispatch({
       type: "ADD_READ",
       payload: {
         id: bookId,
@@ -85,7 +80,7 @@ const BookView = () => {
   };
   const handleClickRemoveRead: React.MouseEventHandler<SVGSVGElement> = () => {
     setRead(false);
-    readDispatch({
+    dispatch({
       type: "REMOVE_READ",
       payload: bookId,
     });

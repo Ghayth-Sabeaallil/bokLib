@@ -1,6 +1,6 @@
-import { ReviewState } from "../Data/ContextProvider";
+import { GlobalState } from "../Data/ContextDataProvider";
 
-const medelRates = (reviewState: ReviewState): string => {
+const medelRates = (reviewState: GlobalState): string => {
     let rate: number = 0;
     reviewState.reviews?.map((r) => {
         rate = rate + r.rate;

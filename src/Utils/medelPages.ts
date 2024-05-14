@@ -1,6 +1,6 @@
-import { ReviewState } from "../Data/ContextProvider";
+import { GlobalState } from "../Data/ContextDataProvider";
 
-const medelPages = (reviewState: ReviewState): number => {
+const medelPages = (reviewState: GlobalState): number => {
     let page: number = 0;
     reviewState.reviews?.map((r) => {
         page = page + parseInt(r.page);

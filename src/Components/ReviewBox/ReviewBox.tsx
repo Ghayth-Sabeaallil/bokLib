@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "../../Styles/Components/ReviewBox.scss"
-import { SaveReviewContext } from "../../Data/ContextProvider";
+import { SaveContext } from "../../Data/ContextDataProvider";
 type ReviewBoxProps = {
     id: string;
 }
@@ -11,10 +11,9 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
     const [pages, setPages] = useState<string>("");
     const [isReview, setIsReview] = useState<boolean>(false);
     const divRef = useRef<HTMLDivElement>(null);
-
-    const { reviewState, reviewDispatch } = useContext(SaveReviewContext);
+    const { state, dispatch } = useContext(SaveContext);
     useEffect(() => {
-        reviewState.reviews.map((a) => {
+        state.reviews.map((a) => {
             if (a.id === id) {
                 setIsReview(true);
             }
@@ -35,7 +34,7 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
     };
 
     const handleSaveReview: React.MouseEventHandler<HTMLButtonElement> = () => {
-        reviewDispatch({
+        dispatch({
             type: "ADD_REVIEW",
             payload: {
                 id: id,

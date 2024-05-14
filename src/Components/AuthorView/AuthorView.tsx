@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { SaveAuthorContext } from "../../Data/ContextProvider";
 import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
-
 import "../../Styles/Components/AuthorView.scss";
 import isObject from "../../Utils/isObject";
+import { SaveContext } from "../../Data/ContextDataProvider";
+
 const getIdFromUrl = (url: string) => {
     const str: string[] = url.split("/");
     const resutl: string = str[str.length - 1];
     return resutl;
 };
 const AuthorView = () => {
-    const { authState, authDispatch } = useContext(SaveAuthorContext);
+    const { state, dispatch } = useContext(SaveContext);
     const [authId, setId] = useState<string>("");
     const [add, setAdd] = useState<boolean>(false);
 
@@ -20,7 +20,7 @@ const AuthorView = () => {
     const isObj = isObject(author?.bio);
 
     useEffect(() => {
-        authState.authors.map((a) => {
+        state.authors.map((a) => {
             if (a.id === authId) {
                 setAdd(true);
             }
@@ -30,14 +30,14 @@ const AuthorView = () => {
 
     const handleClickAdd: React.MouseEventHandler<SVGSVGElement> = () => {
         setAdd(true);
-        authDispatch({
+        dispatch({
             type: "ADD_AUTHOR",
             payload: { id: authId, name: author?.name!, img: author?.photos[0]!, year: author?.birth_date! },
         });
     };
     const handleClickRemove: React.MouseEventHandler<SVGSVGElement> = () => {
         setAdd(false);
-        authDispatch({
+        dispatch({
             type: "REMOVE_AUTHOR",
             payload: authId,
         });

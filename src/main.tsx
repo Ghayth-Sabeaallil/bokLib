@@ -4,14 +4,14 @@ import './Styles/index.scss'
 import { RouterProvider } from 'react-router-dom';
 import { WebRoute } from './Routes/Route';
 
-import ContextProvider from './Data/ContextProvider';
+import ContextDataProvider from './Data/ContextDataProvider';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Suspense fallback={<div>Loading ...</div>}>
-      <ContextProvider>
+      <ContextDataProvider>
         <RouterProvider router={WebRoute} />
-      </ContextProvider>
+      </ContextDataProvider>
     </Suspense>
   </React.StrictMode>,
 );
