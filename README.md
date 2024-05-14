@@ -16,6 +16,10 @@ SCSS
 
 UUIDV4
 
+## API/DATA
+
+[openlibrary](https://openlibrary.org/)
+
 ## Installation And Run (Locally)
 
 Step 1: Clone the repo
@@ -49,3 +53,7 @@ Add the word "box" after the github in my repo url
 https://github.com/Ghayth-Sabeaallil/bokLib <== My repo
 
 https://githubbox.com/Ghayth-Sabeaallil/bokLib <== Online run
+
+## Devloper
+
+[Ghayth Sabeaallil](https://github.com/Ghayth-Sabeaallil)
