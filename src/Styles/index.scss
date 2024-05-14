@@ -1,12 +1,9 @@
-@import "./Abstract/Color";
 @import "./Abstract/Font";
-
 @import "./Mixin/mixin";
 
 * {
   @include base;
 }
 body{
-  background-color: $background-dark-mode;
   background-image: url("/bg.webp");
 }

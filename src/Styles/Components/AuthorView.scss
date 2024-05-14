@@ -1,4 +1,3 @@
-@import "../Abstract/Color";
 @import "../Abstract/Font";
 @import "../Mixin/mixin";
 
@@ -43,8 +42,7 @@
 
     .info-box {
       grid-column: 2/6;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       gap: 3rem;
     }
 
