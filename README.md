@@ -7,9 +7,13 @@ This project is about a library books webapplication. In this project the user c
 ## Dependencies
 
 Vite
+
 TypeScript
+
 REACT
+
 SCSS
+
 UUIDV4
 
 ## Installation And Run (Locally)
