@@ -23,6 +23,7 @@
       grid-column: 1/2;
       @include flex-center-column;
       gap: 1em;
+   
       .done{
         fill: yellow;
       }

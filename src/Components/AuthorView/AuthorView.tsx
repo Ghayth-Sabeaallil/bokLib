@@ -63,12 +63,12 @@ const AuthorView = () => {
                         </div>
                     </div>
                     <div className="info-box">
-                        {author?.name != null ? <h1>{author.name}</h1> : null}
+                        {author?.name != null && <h1>{author.name}</h1>}
                         {isObj ? <h2><span>Des: </span>{author?.bio.value}</h2> : <h2><span></span>{author?.bio}</h2>}
-                        {author?.birth_date != null ? <h3><span>Birthday: </span>{author.birth_date}</h3> : null}
-                        {author?.death_date != null ? <h3><span>Death Date: </span>{author.death_date}</h3> : null}
-                        {author?.location != null ? <h3><span>Location: </span>{author.location}</h3> : null}
-                        {author?.wikipedia != null ? <a href={author.wikipedia}><h3>Wiki</h3></a> : null}
+                        {author?.birth_date != null && <h3><span>Birthday: </span>{author.birth_date}</h3>}
+                        {author?.death_date != null && <h3><span>Death Date: </span>{author.death_date}</h3>}
+                        {author?.location != null && <h3><span>Location: </span>{author.location}</h3>}
+                        {author?.wikipedia != null && <a href={author.wikipedia}><h3>Wiki</h3></a>}
                     </div>
                 </div>
             </main>

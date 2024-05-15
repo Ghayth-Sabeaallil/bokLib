@@ -170,65 +170,63 @@ const BookView = () => {
             </div>
           </div>
           <div className="info-box">
-            {data?.title != null ? <h1>{data.title}</h1> : null}
+            {data?.title != null && <h1 className="black">{data.title}</h1>}
             {isObj ? (
-              <h2>
+              <h3>
                 <span className="black">Description: </span>
                 {data?.description.value}
-              </h2>
+              </h3>
             ) : (
-              <h2>
-                <span>Description: </span>
+              <h3>
+                <span className="black">Description: </span>
                 {data?.description}
-              </h2>
+              </h3>
             )}
-            {author?.name != null ? (
+            {author?.name != null && (
               <>
-                <span className="black">By: </span>{" "}
                 <NavLink to={`/author/${getIdFromUrl(author.key)}`}>
                   {author.name}
-                </NavLink>{" "}
+                </NavLink>
               </>
-            ) : null}
-            {data?.first_publish_date != null ? (
+            )}
+            {data?.first_publish_date != null && (
               <h3>
                 <span className="black">Date of publish: </span>
                 {data.first_publish_date}
               </h3>
-            ) : null}
-            {data?.number_of_pages != null ? (
+            )}
+            {data?.number_of_pages != null && (
               <h3>
                 <span className="black">Pages: </span>
                 {data?.number_of_pages}
               </h3>
-            ) : null}
-            {data?.latest_revision != null ? (
+            )}
+            {data?.latest_revision != null && (
               <h3>
-                <span className="black">Last Verision: </span>{" "}
+                <span className="black">Last Version: </span>
                 {data.latest_revision}
               </h3>
-            ) : null}
-            {rate?.summary.average != null ? (
+            )}
+            {rate?.summary.average != null && (
               <h3>
-                <span className="black">Rate: </span>{" "}
+                <span className="black">Rate: </span>
                 {getTwoDecimala(rate?.summary.average)}/10
               </h3>
-            ) : null}
+            )}
             <div className="subjects-box">
               <span className="black">Subjects: </span>
               {data?.subjects != null
-                ? data?.subjects.map((sub) => (
+                && data?.subjects.map((sub) => (
                   <div key={uuidv4()} className="subject">
                     {sub}
                   </div>
-                ))
-                : null}
+                ))}
             </div>
-            {read ? (
+            {read && (
               <div className="review-box">
                 <ReviewBox id={bookId} />
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </main>

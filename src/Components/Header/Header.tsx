@@ -58,12 +58,12 @@ function Header() {
                         />
                     </div>
                     <div id="search-box-container" className="search-box-container">
-                        {search != "" ?
+                        {search != "" &&
                             (data?.numFound! > 0
-                                ? data?.docs.slice(0, 20).map((book) => (<NavLink to={`/book/${getIdFromUrl(book.key!)}`}><SearchBox cover_i={book.cover_i} title={book.title} author_name={book.author_name}
+                                && data?.docs.slice(0, 20).map((book) => (<NavLink to={`/book/${getIdFromUrl(book.key!)}`}><SearchBox cover_i={book.cover_i} title={book.title} author_name={book.author_name}
                                 /></NavLink>))
-                                : null)
-                            : null}
+                            )
+                        }
                         <a className="show-all" href={`/search?${select}=${search}`}>
                             Show all Results
                         </a>

@@ -5,6 +5,9 @@
   padding: 4rem;
 h1{
   color: white;
+}
+.read-info{
+  @include flex-center-column;
   background-color: #000;
 }
   .main-box {

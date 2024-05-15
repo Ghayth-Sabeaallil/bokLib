@@ -46,20 +46,20 @@ const myLibCom = () => {
     return (
         <>
             <main className="container">
-                <h1>Reviwed Books: {state.reviews.length}</h1>
-                <h1>Medelbetyg : {isNaN(parseInt(mb)) ? 0 : mb}</h1>
-                <h1>Medelantal Sidor : {isNaN(mp) ? 0 : mp}</h1>
+                <div className="read-info"><h1>Reviwed Books: {state.reviews.length}</h1>
+                    <h1>Medelbetyg : {isNaN(parseInt(mb)) ? 0 : mb}</h1>
+                    <h1>Medelantal Sidor : {isNaN(mp) ? 0 : mp}</h1></div>
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={favourite} value={fav} /></legend>
                     {
-                        fav == "favourite authors" ? state?.authors.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveAuth}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
-                        )) : null
+                        fav == "favourite authors" && state?.authors.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/author/${data.id}`}><Card title={data.name} authors={data.id} year={data.year} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveAuth}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
+                        ))
                     }
-                    {fav == "favourite books" ? state?.books.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/book/${data.id}`}><Card title={data.title} authors={data.author} year={data.id} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveBook}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
-                    )) : null}
+                    {fav == "favourite books" && state?.books.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/book/${data.id}`}><Card title={data.title} authors={data.author} year={data.id} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveBook}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
+                    ))}
                     {
-                        fav == "readen books" ? state?.reads.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/book/${data.id}`}><Card title={data.title} authors={data.author} year={data.id} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveRead}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
-                        )) : null
+                        fav == "readen books" && state?.reads.map((data) => (<div key={uuidv4()} className="author-box" ><NavLink to={`/book/${data.id}`}><Card title={data.title} authors={data.author} year={data.id} img_id={data.img} /></NavLink><button id={data.id} onClick={handleRemoveRead}> <img className="remove-icon" src="/remove.png" alt="remove" /></button></div>
+                        ))
                     }
                 </fieldset>
             </main>

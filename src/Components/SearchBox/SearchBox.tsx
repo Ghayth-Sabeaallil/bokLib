@@ -22,8 +22,8 @@ const SearchBox = ({ cover_i, title, author_name }: searchBoxProps) => {
                     />
                 )}
                 <div className="info">
-                    {title != null ? <p className="title">{title}</p> : null}
-                    {author_name != null ? <p className="author">By: {author_name}</p> : null}
+                    {title != null && <p className="title">{title}</p>}
+                    {author_name != null && <p className="author">By: {author_name}</p>}
 
                 </div>
             </div>

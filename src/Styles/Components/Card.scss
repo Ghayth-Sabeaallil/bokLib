@@ -40,6 +40,8 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        backdrop-filter: blur(0px);
+        transition: backdrop-filter 0.5s ease-in-out;
 
         .title {
             color: #FFF;
@@ -69,20 +71,18 @@
             border-top: 1.5px solid rgb(168, 166, 166);
             width: 10rem;
         }
-
     }
-
 }
-
-.bok-card:hover {
-    .bok-img {
-        box-shadow: 0 0 40px #000;
-    }
-
-    .info {
-        background: transparent;
+    .info:hover {
         backdrop-filter: blur(15px);
         transition: opacity 0.5s ease-in-out;
         opacity: 1;
+
+        box-shadow: 0 0 40px #000;
     }
+
+.info:not(:hover) {
+    backdrop-filter: blur(0px);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
 }
