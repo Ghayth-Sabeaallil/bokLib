@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "../../Styles/Components/SearchItem.scss"
 import getTwoDecimala from "../../Utils/getTwoDecimala";
-type cardProps = {
+
+//SearchItem Props
+type SearchItemProps = {
     title: string,
     author_name: string[],
     author_key: string[],
@@ -15,7 +17,7 @@ type cardProps = {
     number_of_pages_median: number;
 }
 
-const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate, author_key }: cardProps) => {
+const SearchItem = ({ title, author_name, img_id, year, first_sentence, number_of_pages_median, rate, author_key }: SearchItemProps) => {
     return (
         <>
             <div className="item">

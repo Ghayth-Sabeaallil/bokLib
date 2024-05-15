@@ -1,4 +1,6 @@
 import "../../Styles/Components/Card.scss"
+
+//Card Props
 type cardProps = {
     title: string,
     authors: string,

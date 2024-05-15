@@ -4,27 +4,26 @@ import SearchBox from "../SearchBox/SearchBox";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { NavLink } from "react-router-dom";
 import useFetchSearchBar from "../../Hooks/useFetch/useFetchSearchBar";
+import { getIdFromUrl } from "../../Utils/getIdFromUrl";
 
-const getIdFromUrl = (url: string) => {
-    const str: string[] = url.split("/");
-    const resutl: string = str[str.length - 1];
-    return resutl;
-};
 
 function Header() {
+    //Search Options
     const selectList = ["title", "author", "isbn", "query"];
+    //React Hooks
     const [select, setSelect] = useState<string>("title");
     const [search, setSearch] = useState<string>("");
+
+    //Custom hooks
     const [data] = useFetchSearchBar({ select, search });
 
-    const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (
-        event
-    ) => {
+    //Select which search option
+    const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setSelect(event.target.value);
     };
-    const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (
-        event
-    ) => {
+
+    //Search and show up the search box
+    const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setSearch(event.target.value);
         const search_box = document.getElementById(
             "search-box-container"
@@ -84,5 +83,4 @@ function Header() {
         </>
     );
 }
-
 export default Header;

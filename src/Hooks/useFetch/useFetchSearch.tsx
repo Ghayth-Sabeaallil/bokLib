@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Search } from "../../Types/dataType";
 
+//Search Props
 type useFetchSearchProps = {
     select: string,
     search: string

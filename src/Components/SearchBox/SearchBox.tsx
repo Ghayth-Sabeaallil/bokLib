@@ -1,16 +1,14 @@
 import "../../Styles/Components/SearchBox.scss";
 import { v4 as uuidv4 } from 'uuid';
 
-
+//Search Box Props
 type searchBoxProps = {
     cover_i: number,
     title: string,
     author_name: string[],
-
 };
 
 const SearchBox = ({ cover_i, title, author_name }: searchBoxProps) => {
-
     return (
         <>
             <div key={uuidv4()} className="search-item">

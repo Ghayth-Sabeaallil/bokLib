@@ -9,32 +9,30 @@ import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ReviewBox from "../ReviewBox/ReviewBox";
 import { SaveContext } from "../../Data/ContextDataProvider";
+import { getIdFromUrl } from "../../Utils/getIdFromUrl";
 
-const getDataFromUrl = (url: string) => {
-  const str: string[] = url.split("/");
-  const resutl: string = str[str.length - 1];
-  return resutl;
-};
 
-const getIdFromUrl = (url: string) => {
-  const str: string[] = url.split("/");
-  const resutl: string = str[str.length - 1];
-  return resutl;
-};
 
 const BookView = () => {
-  const url: string = document.location.href;
-  const id = getIdFromUrl(url);
-  const [data] = useFetchBook(id);
-  const [rate] = useFetchRate(id);
+  //React Hooks
   const [add, setAdd] = useState<boolean>(false);
   const [read, setRead] = useState<boolean>(false);
   const { state, dispatch } = useContext(SaveContext);
+  const [bookId, setId] = useState<string>("");
+
+  const url: string = document.location.href;
+  const id = getIdFromUrl(url);
+
+  //Custom hooks
+  const [data] = useFetchBook(id);
+  const [rate] = useFetchRate(id);
+  const [author] = useFetchAuthor(data?.authors![0].author?.key!);
+
+
+  //Ask if the books description is an object or not
   const isObj = isObject(data?.description);
 
-
-  const [bookId, setId] = useState<string>("");
-  const [author] = useFetchAuthor(data?.authors![0].author?.key!);
+  //useEffect, check if the book is alreday saved or readen
   useEffect(() => {
     state.books.map((a) => {
       if (a.id === bookId) {
@@ -48,6 +46,8 @@ const BookView = () => {
     });
     setId(id);
   });
+
+  //Add the book to fav using useContext
   const handleClickAdd: React.MouseEventHandler<SVGSVGElement> = () => {
     setAdd(true);
     dispatch({
@@ -60,12 +60,14 @@ const BookView = () => {
       },
     });
   };
+
+  //Remove the book from fav using useContext
   const handleClickRemove: React.MouseEventHandler<SVGSVGElement> = () => {
     setAdd(false);
     dispatch({ type: "REMOVE_BOOK", payload: bookId });
-
   };
 
+  //Add the book to read list using useContext
   const handleClickAddRead: React.MouseEventHandler<SVGSVGElement> = () => {
     setRead(true);
     dispatch({
@@ -78,6 +80,8 @@ const BookView = () => {
       },
     });
   };
+
+  //Remove the book from read list using useContext
   const handleClickRemoveRead: React.MouseEventHandler<SVGSVGElement> = () => {
     setRead(false);
     dispatch({
@@ -181,7 +185,7 @@ const BookView = () => {
             {author?.name != null ? (
               <>
                 <span className="black">By: </span>{" "}
-                <NavLink to={`/author/${getDataFromUrl(author.key)}`}>
+                <NavLink to={`/author/${getIdFromUrl(author.key)}`}>
                   {author.name}
                 </NavLink>{" "}
               </>

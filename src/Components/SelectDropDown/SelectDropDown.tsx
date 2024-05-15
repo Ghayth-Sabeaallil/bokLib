@@ -1,13 +1,13 @@
 import "../../Styles/Components/SelectDropDown.scss";
 import { v4 as uuidv4 } from 'uuid';
 
+//DropDown Props
 type SelectDropDownProps = {
     handleSelectChange: React.ChangeEventHandler<HTMLSelectElement>;
     items: string[];
     value: string;
 }
 const SelectDropDown = ({ handleSelectChange, items, value }: SelectDropDownProps) => {
-
     return (
         <select className="select-box" value={value} onChange={handleSelectChange}>
             {
@@ -15,7 +15,6 @@ const SelectDropDown = ({ handleSelectChange, items, value }: SelectDropDownProp
                     <option key={uuidv4()} value={item}>{item.toUpperCase()}</option>
                 ))
             }
-
         </select>
     )
 }

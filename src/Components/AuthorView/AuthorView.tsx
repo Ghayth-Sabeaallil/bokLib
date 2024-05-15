@@ -3,22 +3,24 @@ import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import "../../Styles/Components/AuthorView.scss";
 import isObject from "../../Utils/isObject";
 import { SaveContext } from "../../Data/ContextDataProvider";
+import { getIdFromUrl } from "../../Utils/getIdFromUrl";
 
-const getIdFromUrl = (url: string) => {
-    const str: string[] = url.split("/");
-    const resutl: string = str[str.length - 1];
-    return resutl;
-};
 const AuthorView = () => {
+    //React Hooks
     const { state, dispatch } = useContext(SaveContext);
     const [authId, setId] = useState<string>("");
     const [add, setAdd] = useState<boolean>(false);
 
     const url = document.location.href;
     const id = getIdFromUrl(url);
+
+    //Custom hooks
     const [author] = useFetchAuthor(`/authors/${id}`);
+
+    //Ask if the author bio is an object or not
     const isObj = isObject(author?.bio);
 
+    //useEffect, check if the author is alreday added or not
     useEffect(() => {
         state.authors.map((a) => {
             if (a.id === authId) {
@@ -28,6 +30,7 @@ const AuthorView = () => {
         setId(id);
     });
 
+    //Add author to fav using useContext
     const handleClickAdd: React.MouseEventHandler<SVGSVGElement> = () => {
         setAdd(true);
         dispatch({
@@ -35,6 +38,8 @@ const AuthorView = () => {
             payload: { id: authId, name: author?.name!, img: author?.photos[0]!, year: author?.birth_date! },
         });
     };
+
+    //Remove author from fav using useContext
     const handleClickRemove: React.MouseEventHandler<SVGSVGElement> = () => {
         setAdd(false);
         dispatch({
@@ -60,15 +65,11 @@ const AuthorView = () => {
                     <div className="info-box">
                         {author?.name != null ? <h1>{author.name}</h1> : null}
                         {isObj ? <h2><span>Des: </span>{author?.bio.value}</h2> : <h2><span></span>{author?.bio}</h2>}
-
                         {author?.birth_date != null ? <h3><span>Birthday: </span>{author.birth_date}</h3> : null}
                         {author?.death_date != null ? <h3><span>Death Date: </span>{author.death_date}</h3> : null}
-
                         {author?.location != null ? <h3><span>Location: </span>{author.location}</h3> : null}
                         {author?.wikipedia != null ? <a href={author.wikipedia}><h3>Wiki</h3></a> : null}
                     </div>
-
-
                 </div>
             </main>
         </>

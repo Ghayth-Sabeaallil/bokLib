@@ -1,12 +1,14 @@
 import { createContext, useReducer } from "react";
 
-// GlobalState
+//GlobalState
 export type GlobalState = {
     authors: Author[];
     books: Book[];
     reads: Read[];
     reviews: Review[];
 };
+
+//initial
 const initialSaveState: GlobalState = {
     authors: [],
     books: [],
@@ -68,15 +70,9 @@ type ContextProviderProp = {
     children: React.ReactNode;
 };
 function ContextDataProvider({ children }: ContextProviderProp) {
-    // här kan vi använda useReducer eller useState
-
-    const [state, dispatch] = useReducer(
-        reduces,
-        initialSaveState
-    );
+    const [state, dispatch] = useReducer(reduces, initialSaveState);
 
     return (
-
         <SaveContext.Provider value={{ state, dispatch }}>
             {children}
         </SaveContext.Provider>

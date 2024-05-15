@@ -1,17 +1,24 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "../../Styles/Components/ReviewBox.scss"
 import { SaveContext } from "../../Data/ContextDataProvider";
+
+//Review Props
 type ReviewBoxProps = {
     id: string;
 }
 
 const ReviewBox = ({ id }: ReviewBoxProps) => {
+    //React Hooks
     const [rate, setRate] = useState<number>(0);
     const [review, setReview] = useState<string>("");
     const [pages, setPages] = useState<string>("");
     const [isReview, setIsReview] = useState<boolean>(false);
     const divRef = useRef<HTMLDivElement>(null);
+
+    //Context
     const { state, dispatch } = useContext(SaveContext);
+
+    //UseEffect check if this book is already reviewed 
     useEffect(() => {
         state.reviews.map((a) => {
             if (a.id === id) {
@@ -19,20 +26,23 @@ const ReviewBox = ({ id }: ReviewBoxProps) => {
             }
         });
     });
-    const handleRateChange: React.ChangeEventHandler<HTMLInputElement> = (
-        event
-    ) => {
+
+    //Set Rate
+    const handleRateChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setRate(parseInt(event.currentTarget.value));
     };
-    const handleReviewChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
-        event
-    ) => {
+
+    //Set review
+    const handleReviewChange: React.ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setReview(event.currentTarget.value);
     };
+
+    //Set pages
     const handlePageChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setPages(event.currentTarget.value);
     };
 
+    //Add review using useContext
     const handleSaveReview: React.MouseEventHandler<HTMLButtonElement> = () => {
         dispatch({
             type: "ADD_REVIEW",
