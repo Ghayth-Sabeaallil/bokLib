@@ -11,9 +11,11 @@ const useFetchSearchBar = ({ search, select }: useFetchSearchProps) => {
     const [subject, setSubject] = useState<Search | null>(null);
 
     useEffect(() => {
-        fetch(`https://openlibrary.org/search.json?${select}=${search}`)
-            .then((res) => res.json())
-            .then((data) => setSubject(data));
+        if (search != "") {
+            fetch(`https://openlibrary.org/search.json?${select}=${search}`)
+                .then((res) => res.json())
+                .then((data) => setSubject(data));
+        }
     }, [search, select]);
 
     return [subject];
