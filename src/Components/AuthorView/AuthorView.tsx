@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import "../../Styles/Components/AuthorView.scss";
 import isObject from "../../Utils/isObject";
 import { SaveContext } from "../../Data/ContextDataProvider";
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
+import useFetch from "../../Hooks/useFetch/useFetch";
+import { Authors } from "../../Types/dataType";
 
 const AuthorView = () => {
     //React Hooks
@@ -15,7 +16,9 @@ const AuthorView = () => {
     const id = getIdFromUrl(url);
 
     //Custom hooks
-    const [author] = useFetchAuthor(`/authors/${id}`);
+    const [author] = useFetch({ payload: { id: `/authors/${id}` }, type: "FETCH_AUTHOR" }) as Authors[];
+
+
 
     //Ask if the author bio is an object or not
     const isObj = isObject(author?.bio);

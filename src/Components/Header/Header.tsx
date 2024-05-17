@@ -3,9 +3,10 @@ import "../../Styles/Components/Header.scss";
 import SearchBox from "../SearchBox/SearchBox";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { NavLink } from "react-router-dom";
-import useFetchSearchBar from "../../Hooks/useFetch/useFetchSearchBar";
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
-
+import { Search } from "../../Types/dataType";
+import useFetch from "../../Hooks/useFetch/useFetch";
+import { v4 as uuidv4 } from 'uuid';
 
 function Header() {
     //Search Options
@@ -16,7 +17,7 @@ function Header() {
     const [search, setSearch] = useState<string>("");
 
     //Custom hooks
-    const [data] = useFetchSearchBar({ select, search });
+    const [data] = useFetch({ payload: { select: select, search: search }, type: "FETCH_SEARCH" }) as Search[];
 
     //Select which search option
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
@@ -60,13 +61,11 @@ function Header() {
                     <div id="search-box-container" className="search-box-container">
                         {search != "" &&
                             (data?.numFound! > 0
-                                && data?.docs.slice(0, 20).map((book) => (<NavLink to={`/book/${getIdFromUrl(book.key!)}`}><SearchBox cover_i={book.cover_i} title={book.title} author_name={book.author_name}
+                                && data?.docs.slice(0, 20).map((book) => (<NavLink key={uuidv4()} to={`/book/${getIdFromUrl(book.key!)}`}><SearchBox cover_i={book.cover_i} title={book.title} author_name={book.author_name}
                                 /></NavLink>))
                             )
                         }
-                        <a className="show-all" href={`/search?${select}=${search}`}>
-                            Show all Results
-                        </a>
+                        <NavLink className={"show-all"} to={`/search?${select}=${search}`}>Show all Results</NavLink>
                     </div>
                 </div>
                 <NavLink to="/mylib" className="my-books"><svg

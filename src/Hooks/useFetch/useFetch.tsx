@@ -1,51 +1,65 @@
 import { useEffect, useState } from "react";
-import { Authors, BookDetails, BookRate, Search, Subject } from "../../Types/dataType";
+import { AuthorDetails, Authors, BookDetails, BookRate, Search, Subject } from "../../Types/dataType";
 
 type useFetchProps = {
     id?: string,
     select?: string,
     search?: string,
     subject?: string,
-    type?: string
 }
-const useFetchSubjects = ({ id, select, search, subject, type }: useFetchProps) => {
-    const [fetchData, setFetch] = useState<Subject | Authors | BookDetails | BookRate | Search | null>();
+
+type Action =
+    | { type: "FETCH_SUBJECT", payload: useFetchProps }
+    | { type: "FETCH_AUTHOR", payload: useFetchProps }
+    | { type: "FETCH_BOOK", payload: useFetchProps }
+    | { type: "FETCH_RATE", payload: useFetchProps }
+    | { type: "FETCH_SEARCH", payload: useFetchProps }
+
+const useFetch = (action: Action) => {
+    const [fetchData, setFetch] = useState<Subject | Authors | BookDetails | BookRate | Search | AuthorDetails | null>(null);
 
     useEffect(() => {
-        switch (type) {
+        switch (action.type) {
             case "FETCH_SUBJECT": {
-                fetch(`https://openlibrary.org/subjects/${subject}.json`)
+                fetch(`https://openlibrary.org/subjects/${action.payload.subject}.json`)
                     .then((res) => res.json())
                     .then((data) => setFetch(data));
+                break;
             }
             case "FETCH_AUTHOR": {
-                fetch(`https://openlibrary.org${id}.json`)
+                fetch(`https://openlibrary.org${action.payload.id}.json`)
                     .then((res) => res.json())
                     .then((data) => setFetch(data));
+                break;
             }
             case "FETCH_BOOK": {
-                fetch(`https://openlibrary.org/works/${id}.json`)
+                fetch(`https://openlibrary.org/works/${action.payload.id}.json`)
                     .then((res) => res.json())
                     .then((data) => setFetch(data));
+                break;
             }
             case "FETCH_RATE": {
-                fetch(`https://openlibrary.org/works/${id}/ratings.json`)
+                fetch(`https://openlibrary.org/works/${action.payload.id}/ratings.json`)
                     .then((res) => res.json())
                     .then((data) => setFetch(data));
+                break;
             }
             case "FETCH_SEARCH": {
-                fetch(`https://openlibrary.org/search.json?${select}=${search}`)
-                    .then((res) => res.json())
-                    .then((data) => setFetch(data));
+                if (action.payload.search != "") {
+                    fetch(`https://openlibrary.org/search.json?${action.payload.select}=${action.payload.search}`)
+                        .then((res) => res.json())
+                        .then((data) => setFetch(data));
+                }
+                break;
+
             }
             default:
-                throw new Error("No Fetch");
         }
 
 
 
-    }, [type]);
+    }, [action.type, action.payload.search, action.payload.select]);
 
     return [fetchData];
 };
-export default useFetchSubjects;
+export default useFetch;

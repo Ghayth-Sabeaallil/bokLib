@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import useFetchSearch from "../../Hooks/useFetch/useFetchSearch";
 import "../../Styles/Components/SearchPageBox.scss"
 import getSearchFromUrl from "../../Utils/getSearchFromUrl";
 import SearchItem from "../SearchItem/SearchItem";
 import { v4 as uuidv4 } from 'uuid';
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
+import { Search } from "../../Types/dataType";
+import useFetch from "../../Hooks/useFetch/useFetch";
 
 
 const SearchPageBox = () => {
@@ -13,7 +14,8 @@ const SearchPageBox = () => {
     const [select, search] = getSearchFromUrl(url);
 
     //Custom hooks
-    const [data] = useFetchSearch({ select, search });
+    const [data] = useFetch({ payload: { select: select, search: search }, type: "FETCH_SEARCH" }) as Search[];
+
 
     return (
         <>

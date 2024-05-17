@@ -1,11 +1,12 @@
 import { useState } from "react";
-import useFetchSubjects from "../../Hooks/useFetch/useFetchSubjects";
 import "../../Styles/Components/Main.scss"
 import Card from "../Card/Card";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 import { v4 as uuidv4 } from 'uuid';
 import { NavLink } from "react-router-dom";
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
+import useFetch from "../../Hooks/useFetch/useFetch";
+import { Subject } from "../../Types/dataType";
 
 const Main = () => {
     //Select Options
@@ -15,7 +16,8 @@ const Main = () => {
     const [subject, setSubject] = useState<string>("horror");
 
     //Custom hooks
-    const [data] = useFetchSubjects({ subject });
+    const [data] = useFetch({ payload: { subject: subject }, type: "FETCH_SUBJECT" }) as Subject[];
+
 
     //Save the option
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {

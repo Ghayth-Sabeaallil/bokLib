@@ -1,5 +1,3 @@
-import useFetchBook from "../../Hooks/useFetch/useFetchBook";
-import useFetchRate from "../../Hooks/useFetch/useFetchRate";
 import "../../Styles/Components/BookView.scss";
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 import isObject from "../../Utils/isObject";
@@ -10,6 +8,8 @@ import { useContext, useEffect, useState } from "react";
 import ReviewBox from "../ReviewBox/ReviewBox";
 import { SaveContext } from "../../Data/ContextDataProvider";
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
+import useFetch from "../../Hooks/useFetch/useFetch";
+import { BookDetails, BookRate } from "../../Types/dataType";
 
 
 
@@ -24,9 +24,12 @@ const BookView = () => {
   const id = getIdFromUrl(url);
 
   //Custom hooks
-  const [data] = useFetchBook(id);
-  const [rate] = useFetchRate(id);
+  const [data] = useFetch({ payload: { id: id }, type: "FETCH_BOOK" }) as BookDetails[];
+  const [rate] = useFetch({ payload: { id: id }, type: "FETCH_RATE" }) as BookRate[];
   const [author] = useFetchAuthor(data?.authors![0].author?.key!);
+  /*
+   
+  const [author] = useFetch({ payload: { id: data?.authors![0].author?.key! }, type: "FETCH_AUTHOR" }) as Authors[];*/
 
 
   //Ask if the books description is an object or not
