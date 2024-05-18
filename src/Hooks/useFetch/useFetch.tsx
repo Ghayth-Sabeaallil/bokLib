@@ -51,13 +51,9 @@ const useFetch = (action: Action) => {
                         .then((data) => setFetch(data));
                 }
                 break;
-
             }
             default:
         }
-
-
-
     }, [action.type, action.payload.search, action.payload.select, action.payload.subject, action.payload.id]);
 
     return [fetchData];
