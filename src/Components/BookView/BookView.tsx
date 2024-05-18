@@ -2,14 +2,13 @@ import "../../Styles/Components/BookView.scss";
 import getTwoDecimala from "../../Utils/getTwoDecimala";
 import isObject from "../../Utils/isObject";
 import { v4 as uuidv4 } from "uuid";
-import useFetchAuthor from "../../Hooks/useFetch/useFetchAuthor";
 import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ReviewBox from "../ReviewBox/ReviewBox";
 import { SaveContext } from "../../Data/ContextDataProvider";
 import { getIdFromUrl } from "../../Utils/getIdFromUrl";
 import useFetch from "../../Hooks/useFetch/useFetch";
-import { BookDetails, BookRate } from "../../Types/dataType";
+import { Authors, BookDetails, BookRate } from "../../Types/dataType";
 
 
 
@@ -26,7 +25,8 @@ const BookView = () => {
   //Custom hooks
   const [data] = useFetch({ payload: { id: id }, type: "FETCH_BOOK" }) as BookDetails[];
   const [rate] = useFetch({ payload: { id: id }, type: "FETCH_RATE" }) as BookRate[];
-  const [author] = useFetchAuthor(data?.authors![0].author?.key!);
+  const [author] = useFetch({ payload: { id: data?.authors![0].author?.key! }, type: "FETCH_AUTHOR" }) as Authors[];
+
   /*
    
   const [author] = useFetch({ payload: { id: data?.authors![0].author?.key! }, type: "FETCH_AUTHOR" }) as Authors[];*/

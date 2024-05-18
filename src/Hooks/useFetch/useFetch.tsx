@@ -58,7 +58,7 @@ const useFetch = (action: Action) => {
 
 
 
-    }, [action.type, action.payload.search, action.payload.select]);
+    }, [action.type, action.payload.search, action.payload.select, action.payload.subject, action.payload.id]);
 
     return [fetchData];
 };
