@@ -4,7 +4,7 @@
 
 This project is about a library books webapplication. In this project the user can search for book/author/query or isbn. The user can also save book or author and set a mark as readen book and give a review and rate.
 
-## Dependencies
+## Dependencies & Tech
 
 Vite
 
