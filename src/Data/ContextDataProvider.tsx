@@ -61,7 +61,6 @@ const reduces = (state: GlobalState, action: Action) => {
                 ...state,
                 reads: state.reads.filter((l) => l.id !== action.payload),
                 reviews: state.reviews.filter((l) => l.id !== action.payload),
-
             };
         default:
             return state;
