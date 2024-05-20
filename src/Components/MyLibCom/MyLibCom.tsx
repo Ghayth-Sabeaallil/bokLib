@@ -39,16 +39,22 @@ const myLibCom = () => {
         setFav(event.target.value);
     };
 
-    //MedelPage / Medelbyteg
+    //MedelPage / Medelbyteg 
     const mp = medelPages(state);
     const mb = medelRates(state);
+
 
     return (
         <>
             <main className="container">
-                <div className="read-info"><h1>Reviwed Books: {state.reviews.length}</h1>
-                    <h1>Medelbetyg : {isNaN(parseInt(mb)) ? 0 : mb}</h1>
-                    <h1>Medelantal Sidor : {isNaN(mp) ? 0 : mp}</h1></div>
+                <div className="read-info">
+                    <div className="circle-info"><h2>Reviwed Books</h2><div className="circle"><h2>{state.reviews.length}</h2></div></div>
+                    <div className="circle-info"><h2>Medelbetyg</h2><div className="circle"><h2>{isNaN(parseInt(mb)) ? 0 : mb}</h2></div></div>
+                    <div className="circle-info"><h2>Medelantal Sidor</h2><div className="circle"><h2>{isNaN(mp[1]) ? 0 : mp[1]}</h2></div></div>
+                    <div className="circle-info"><h2>Total Sidor</h2><div className="circle"><h2>{isNaN(mp[0]) ? 0 : mp}</h2></div></div>
+
+
+                </div>
                 <fieldset className="main-box">
                     <legend className="main-text"><SelectDropDown handleSelectChange={handleSelectChange} items={favourite} value={fav} /></legend>
                     {

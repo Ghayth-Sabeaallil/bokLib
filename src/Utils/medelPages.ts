@@ -1,12 +1,12 @@
 import { GlobalState } from "../Data/ContextDataProvider";
 
-const medelPages = (reviewState: GlobalState): number => {
-    let page: number = 0;
+const medelPages = (reviewState: GlobalState): number[] => {
+    let total: number = 0;
     reviewState.reviews?.map((r) => {
-        page = page + parseInt(r.page);
+        total = total + parseInt(r.page);
     })
 
-    page = page / reviewState.reviews?.length!;
-    return page;
+    let mp = total / reviewState.reviews?.length!;
+    return [total, mp];
 };
 export default medelPages;

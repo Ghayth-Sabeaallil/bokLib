@@ -2,13 +2,32 @@
 @import "../Mixin/mixin";
 .container {
   @include flex-center-column;
+  gap: 1rem;
   padding: 4rem;
 h1{
   color: white;
 }
 .read-info{
-  @include flex-center-column;
-  background-color: #000;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem 1rem 2rem 1rem;
+  justify-items: center;
+  background-image: url("/bg-main.jpg");
+  width: 90vw;
+  .circle-info{
+    @include flex-center-column;
+    .circle{
+      @include flex-center;
+      text-align: center;
+      color: #000;
+      width: 12rem;
+      height: 12rem;
+      border-radius: 50%;
+      border: 7px solid black;
+    }
+    }
+  
+
 }
   .main-box {
     width: 90vw;

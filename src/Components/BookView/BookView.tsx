@@ -213,7 +213,7 @@ const BookView = () => {
             {rate?.summary.average != null && (
               <h3>
                 <span className="black">Rate: </span>
-                {getTwoDecimala(rate?.summary.average)}/10
+                {getTwoDecimala(rate?.summary.average)}/5
               </h3>
             )}
             <div className="subjects-box">
