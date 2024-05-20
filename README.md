@@ -10,7 +10,9 @@ Vite
 
 TypeScript
 
-REACT
+React
+
+React Router
 
 SASS
 
