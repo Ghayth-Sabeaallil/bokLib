@@ -10,9 +10,11 @@ Vite
 
 TypeScript
 
-REACT
+React
 
-SCSS
+React Router
+
+SASS
 
 UUIDV4
 
