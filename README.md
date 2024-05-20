@@ -12,7 +12,7 @@ TypeScript
 
 REACT
 
-SCSS
+SASS
 
 UUIDV4
 
