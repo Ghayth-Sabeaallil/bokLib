@@ -51,7 +51,7 @@ const myLibCom = () => {
                     <div className="circle-info"><h2>Reviwed Books</h2><div className="circle"><h2>{state.reviews.length}</h2></div></div>
                     <div className="circle-info"><h2>Medelbetyg</h2><div className="circle"><h2>{isNaN(parseInt(mb)) ? 0 : mb}</h2></div></div>
                     <div className="circle-info"><h2>Medelantal Sidor</h2><div className="circle"><h2>{isNaN(mp[1]) ? 0 : mp[1]}</h2></div></div>
-                    <div className="circle-info"><h2>Total Sidor</h2><div className="circle"><h2>{isNaN(mp[0]) ? 0 : mp}</h2></div></div>
+                    <div className="circle-info"><h2>Total Sidor</h2><div className="circle"><h2>{isNaN(mp[0]) ? 0 : mp[0]}</h2></div></div>
 
 
                 </div>
